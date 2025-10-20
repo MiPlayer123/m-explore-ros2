@@ -1,3 +1,8 @@
 *sublime-*
 *.svg
 *.xcf
+
+# Colcon build artifacts
+build/
+install/
+log/
