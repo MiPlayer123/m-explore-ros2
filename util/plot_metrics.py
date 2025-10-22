@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import json
 import matplotlib.pyplot as plt
+import os
+import subprocess
 
 # Read the data
 with open('/tmp/metrics.json', 'r') as f:
@@ -29,16 +31,24 @@ if data:
              fontsize=10, verticalalignment='top', 
              bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
 
-# Save
 plt.tight_layout()
+
+# Save to /tmp as backup
 plt.savefig('/tmp/exploration_plot.png', dpi=150)
 print("Plot saved to /tmp/exploration_plot.png")
 
-# Also copy to Desktop
+# Auto-detect Windows username and save to Desktop
 try:
-    plt.savefig('/mnt/c/Users/Jeff/Desktop/exploration_plot.png', dpi=150)
-    print("Plot also saved to Desktop!")
-except:
-    print("Could not save to Desktop (that's OK)")
+    # Get Windows username from the mounted C: drive path
+    result = subprocess.run(['cmd.exe', '/c', 'echo %USERNAME%'], 
+                          capture_output=True, text=True)
+    windows_user = result.stdout.strip()
+    
+    desktop_path = f'/mnt/c/Users/{windows_user}/Desktop/exploration_plot.png'
+    plt.savefig(desktop_path, dpi=150)
+    print(f"Plot saved to Desktop: C:\\Users\\{windows_user}\\Desktop\\exploration_plot.png")
+except Exception as e:
+    print(f"Could not save to Desktop: {e}")
+    print("Plot is still available at /tmp/exploration_plot.png")
 
 plt.show()
