@@ -10,7 +10,7 @@
 \usepackage{booktabs}
 
 \pdfinfo{
-   /Author (Anonymous)
+   /Author (Jeffrey Kravitz, Samay Lakhani, Mikul Saravanan)
    /Title  (Autonomous Frontier-Based Exploration in ROS2)
    /CreationDate (D:20251022000000)
    /Subject (Robotics)
@@ -21,7 +21,7 @@
 
 \title{Autonomous Frontier-Based Exploration\\ in ROS2: System Integration and Performance Analysis}
 
-\author{Author Names Omitted for Anonymous Review. Paper-ID [TBD]}
+\author{Jeffrey Kravitz, Samay Lakhani, Mikul Saravanan}
 
 \maketitle
 
@@ -33,23 +33,15 @@ This milestone report presents our progress in implementing and evaluating an au
 
 \section{Introduction}
 
-Autonomous exploration enables robots to systematically discover and map unknown environments without human intervention, a fundamental capability for applications ranging from search and rescue operations to planetary exploration and infrastructure inspection. The frontier-based exploration paradigm~\cite{yamauchi1997frontier}, which directs robots toward boundaries between known free space and unknown regions, remains the dominant approach due to its simplicity and effectiveness.
+Autonomous exploration enables robots to systematically discover and map unknown environments without human intervention, critical for search and rescue, planetary exploration, and infrastructure inspection. The frontier-based paradigm~\cite{yamauchi1997frontier}, directing robots toward boundaries between known and unknown regions, remains dominant due to its simplicity and effectiveness.
 
-Our project focuses on implementing and analyzing frontier-based exploration in ROS2, the modern robotics middleware that has superseded ROS1 across academic and industrial applications. While ROS1 exploration packages are mature, ROS2 ports face unique challenges including action server interfaces, lifecycle node management, and distributed system architecture. We adapted the m-explore package to ROS2, integrating it with contemporary SLAM and navigation stacks.
-
-Since our initial proposal, we have successfully integrated the complete exploration pipeline, deployed it in simulation with the TurtleBot3 platform, and conducted systematic performance evaluation. This milestone report details our technical implementation, presents quantitative results comparing autonomous vs. manual exploration, and identifies key optimization opportunities including initialization delays and parameter sensitivity. Our work establishes a foundation for deploying reliable autonomous exploration in diverse real-world scenarios.
+Our project implements and analyzes frontier-based exploration in ROS2, adapting the m-explore package with contemporary SLAM and navigation stacks. We have integrated the complete pipeline, deployed it in simulation with TurtleBot3, and conducted systematic evaluation. This report details our technical implementation, presents quantitative results comparing autonomous vs. manual exploration, and identifies optimization opportunities including initialization delays and parameter sensitivity.
 
 \section{Problem Refinement \& Objectives}
 
 \subsection{Evolved Problem Statement}
 
-Our initial proposal aimed to implement autonomous exploration in ROS2. Through hands-on development, we have refined this to focus on three interconnected challenges:
-
-\textbf{System Integration:} Coordinating SLAM (Simultaneous Localization and Mapping), path planning (Nav2), and frontier detection into a robust exploration pipeline that handles dynamic environments and recovers from navigation failures.
-
-\textbf{Performance Optimization:} Addressing exploration speed bottlenecks observed in our initial trials, where the robot explores "suuuper slowly" compared to expectations—potentially due to computational constraints, parameter misconfiguration, or algorithmic inefficiencies.
-
-\textbf{Quantitative Evaluation:} Developing metrics and benchmarks to objectively assess exploration performance across different environments and parameter configurations.
+Through hands-on development, we refined our focus to three interconnected challenges: (1) \textbf{System Integration}—coordinating SLAM, Nav2, and frontier detection into a robust pipeline; (2) \textbf{Performance Optimization}—addressing exploration speed bottlenecks observed in initial trials where the robot explores "suuuper slowly"; and (3) \textbf{Quantitative Evaluation}—developing metrics to assess performance across environments and configurations.
 
 \subsection{Refined Objectives}
 
@@ -215,51 +207,21 @@ Figure~\ref{fig:progression} visualizes the spatial evolution across three key p
 
 \subsection{Limitations}
 
-Our preliminary results are limited to a single environment and parameter configuration. Key limitations include:
-
-\begin{itemize}
-    \item \textbf{Single environment:} Results may not generalize to open spaces, cluttered environments, or multi-room structures.
-    \item \textbf{Simulation only:} Real-world deployment would introduce sensor noise, localization drift, and mechanical constraints.
-    \item \textbf{Limited parameter sweep:} We have not systematically explored the impact of gain\_scale, potential\_scale, or planner\_frequency.
-    \item \textbf{No failure analysis:} We have not quantified navigation failures, frontier selection errors, or recovery behaviors.
-\end{itemize}
+Key limitations: (1) single environment testing, (2) simulation only, (3) no systematic parameter sweep, and (4) no failure mode quantification.
 
 \section{Plan Forward}
 
 \subsection{Milestone 2 Objectives}
 
-\textbf{1. Performance Optimization (Weeks 1-2):}
-\begin{itemize}
-    \item Profile computational bottlenecks using ROS2 profiling tools
-    \item Investigate initial delay and implement warm-start strategies
-    \item Conduct parameter sweep: vary planner\_frequency (0.1-1.0 Hz), min\_frontier\_size (0.3-1.5m), and scoring weights
-    \item Compare native ROS2 installation vs. conda environment performance
-\end{itemize}
+\textbf{Performance Optimization:} Profile bottlenecks, investigate initialization delay, conduct parameter sweep (planner\_frequency, min\_frontier\_size, scoring weights), compare native vs. conda ROS2.
 
-\textbf{2. Multi-Environment Evaluation (Weeks 2-3):}
-\begin{itemize}
-    \item Test in 3-5 environments: open world, maze, multi-room house, warehouse
-    \item Measure coverage, time-to-completion, path efficiency (distance traveled / coverage gained)
-    \item Analyze failure modes and recovery strategies
-\end{itemize}
+\textbf{Multi-Environment Evaluation:} Test in 3-5 environments (open world, maze, house, warehouse), measure coverage/time/efficiency, analyze failure modes.
 
-\textbf{3. Advanced Features (Week 3):}
-\begin{itemize}
-    \item Implement dynamic parameter adaptation based on exploration phase
-    \item Explore alternative frontier selection heuristics (information gain, expected coverage)
-    \item Investigate multi-robot exploration using map\_merge component
-\end{itemize}
+\textbf{Advanced Features:} Implement dynamic parameter adaptation, explore alternative frontier heuristics, investigate multi-robot exploration.
 
 \subsection{Final Report Deliverables}
 
-By the final report, we expect to deliver:
-\begin{itemize}
-    \item Comprehensive performance characterization across 5+ environments
-    \item Optimized parameter configurations with ablation studies
-    \item Comparison with alternative exploration strategies (random walk, wall-following)
-    \item Real-world deployment feasibility analysis
-    \item Open-source code release with documentation
-\end{itemize}
+Expected deliverables: (1) performance characterization across 5+ environments, (2) optimized parameters with ablation studies, (3) comparison with alternative strategies, (4) real-world deployment analysis, and (5) open-source code release.
 
 \subsection{Risk Mitigation}
 
@@ -271,13 +233,7 @@ By the final report, we expect to deliver:
 
 \section{Conclusion}
 
-We have successfully implemented a functional autonomous exploration system in ROS2, integrating SLAM, navigation, and frontier-based planning into a cohesive pipeline. Our experimental evaluation demonstrates that automated exploration achieves 74.3\% coverage with 2.24$\times$ higher efficiency than manual teleoperation, validating the practical utility of frontier-based approaches for real-world robotics applications.
-
-Key technical achievements include: (1) robust system integration across ROS2 Cartographer SLAM, Nav2 navigation, and explore\_lite frontier detection, (2) development of automated metrics collection infrastructure enabling quantitative performance analysis, and (3) comprehensive characterization of exploration behavior across initialization, rapid exploration, and saturation phases.
-
-Our analysis revealed critical optimization opportunities: the 50-second initialization delay suggests SLAM warm-start strategies could accelerate deployment, while the low planner\_frequency (0.15 Hz) represents a major bottleneck addressable through parameter tuning. The 74\% coverage ceiling highlights fundamental trade-offs between frontier size thresholds and navigation safety.
-
-Milestone 2 will systematically address these findings through multi-environment testing, parameter optimization, and computational profiling to produce a robust, well-characterized exploration system suitable for diverse deployment scenarios. Our ultimate goal is to establish performance baselines and best practices for frontier-based exploration in ROS2 ecosystems.
+We successfully implemented a functional autonomous exploration system in ROS2, achieving 74.3\% coverage with 2.24$\times$ higher efficiency than manual teleoperation. Key achievements include robust SLAM-navigation-frontier detection integration, automated metrics infrastructure, and comprehensive behavior characterization across exploration phases. Analysis revealed optimization opportunities: the 50-second initialization delay suggests SLAM warm-start strategies, while low planner\_frequency (0.15 Hz) represents an addressable bottleneck. Milestone 2 will focus on multi-environment testing, parameter optimization, and computational profiling to establish performance baselines for frontier-based exploration in ROS2.
 
 \section*{Acknowledgments}
 
