@@ -2,13 +2,16 @@
 \providecommand\hyper@newdestlabel[2]{}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{yamauchi1997frontier}
 \citation{horner2016exploration}
 \@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{section.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {II}Problem Refinement \& Objectives}{1}{section.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-A}}Evolved Problem Statement}{1}{subsection.2.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-B}}Refined Objectives}{1}{subsection.2.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {III}Technical Implementation}{1}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}System Architecture}{1}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}System Architecture Overview}{1}{subsection.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces System architecture showing the data flow from sensor input through SLAM, frontier detection, goal selection, and navigation control. All components communicate via ROS2 topics and action servers.}}{2}{figure.1}\protected@file@percent }
+\newlabel{fig:architecture}{{1}{2}{System architecture showing the data flow from sensor input through SLAM, frontier detection, goal selection, and navigation control. All components communicate via ROS2 topics and action servers}{figure.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Implementation Details}{2}{subsection.3.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Key Parameters}{2}{subsection.3.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {IV}Preliminary Results}{2}{section.4}\protected@file@percent }
@@ -16,18 +19,21 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Quantitative Results}{2}{subsection.4.2}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Exploration Performance Comparison}}{2}{table.1}\protected@file@percent }
 \newlabel{tab:results}{{I}{2}{Exploration Performance Comparison}{table.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Coverage over time for automated (left) and manual (right) exploration. Automated exploration achieves higher peak coverage (74.3\%) in less time (185s) compared to manual teleoperation (63.3\%, 354s).}}{2}{figure.1}\protected@file@percent }
-\newlabel{fig:coverage}{{1}{2}{Coverage over time for automated (left) and manual (right) exploration. Automated exploration achieves higher peak coverage (74.3\%) in less time (185s) compared to manual teleoperation (63.3\%, 354s)}{figure.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Analysis \& Observations}{2}{subsection.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-D}}Limitations}{2}{subsection.4.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Coverage over time comparison: Automated exploration (left, blue) achieves 74.3\% coverage in 185s with distinct phases. Manual teleoperation (right, green) reaches only 63.3\% coverage in 354s with irregular progression reflecting human reaction delays.}}{3}{figure.2}\protected@file@percent }
+\newlabel{fig:coverage}{{2}{3}{Coverage over time comparison: Automated exploration (left, blue) achieves 74.3\% coverage in 185s with distinct phases. Manual teleoperation (right, green) reaches only 63.3\% coverage in 354s with irregular progression reflecting human reaction delays}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Exploration Progression Analysis}{3}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-D}}Analysis \& Observations}{3}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-E}}Limitations}{3}{subsection.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {V}Plan Forward}{3}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Milestone 2 Objectives}{3}{subsection.5.1}\protected@file@percent }
 \bibstyle{plainnat}
 \bibcite{horner2016exploration}{{1}{}{{}}{{}}}
 \bibcite{yamauchi1997frontier}{{2}{}{{}}{{}}}
 \bibcite{burgard2005coordinated}{{3}{}{{}}{{}}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
-\@writefile{toc}{\contentsline {section}{\numberline {V}Plan Forward}{3}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Milestone 2 Objectives}{3}{subsection.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Final Report Deliverables}{3}{subsection.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}Risk Mitigation}{3}{subsection.5.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusion}{3}{section.6}\protected@file@percent }
-\gdef \@abspage@last{3}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Exploration progression (left to right): initial phase with limited coverage, mid-exploration revealing corridor structure, and final saturation state. RViz shows occupancy grids (cyan=free, purple=occupied, gray=unknown) with frontier markers (cyan circles) and costmap inflation layers.}}{4}{figure.3}\protected@file@percent }
+\newlabel{fig:progression}{{3}{4}{Exploration progression (left to right): initial phase with limited coverage, mid-exploration revealing corridor structure, and final saturation state. RViz shows occupancy grids (cyan=free, purple=occupied, gray=unknown) with frontier markers (cyan circles) and costmap inflation layers}{figure.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Final Report Deliverables}{4}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}Risk Mitigation}{4}{subsection.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusion}{4}{section.6}\protected@file@percent }
+\gdef \@abspage@last{4}

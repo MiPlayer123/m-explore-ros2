@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  22 OCT 2025 19:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  22 OCT 2025 20:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -512,27 +512,35 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Underfull \hbox (badness 6575) in paragraph at lines 48--49
+
+
+Underfull \hbox (badness 6575) in paragraph at lines 50--51
 \OT1/ptm/m/n/10 bot-tle-necks ob-served in our ini-tial tri-als, where the
  []
 
 
-Underfull \hbox (badness 3088) in paragraph at lines 48--49
+Underfull \hbox (badness 3088) in paragraph at lines 50--51
 \OT1/ptm/m/n/10 robot ex-plores "su-u-u-per slowly" com-pared to ex-pec-ta-
  []
 
 
-
-
-Underfull \hbox (badness 4001) in paragraph at lines 57--58
+Underfull \hbox (badness 4001) in paragraph at lines 59--60
 []\OT1/ptm/b/n/10 Deploy func-tional ex-plo-ration sys-tem: \OT1/ptm/m/n/10 In-
 te-grate
  []
 
 
-Underfull \hbox (badness 6461) in paragraph at lines 57--58
+Underfull \hbox (badness 6461) in paragraph at lines 59--60
 \OT1/ptm/m/n/10 m-explore-ros2 with Nav2 and SLAM back-ends
  []
+
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 8
+2.
+(/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
@@ -541,67 +549,102 @@ ocal/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
 ]
-Underfull \hbox (badness 5519) in paragraph at lines 88--89
+Underfull \hbox (badness 10000) in paragraph at lines 111--112
+[]\OT1/ptm/m/it/10 Filtering: \OT1/ptm/m/n/10 Dis-card fron-tiers smaller than
+ []
+
+
+Underfull \hbox (badness 2875) in paragraph at lines 111--112
+\OT1/ptm/m/n/10 min[]frontier[]size thresh-old or in-ac-ces-si-ble due to
+ []
+
+
+Underfull \hbox (badness 5519) in paragraph at lines 124--125
 []\OT1/ptm/b/n/10 Launch Au-toma-tion: \OT1/ptm/m/n/10 We de-vel-oped a bash sc
 ript
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 90--91
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
 []\OT1/ptm/b/n/10 Metrics Col-lec-tion: \OT1/ptm/m/n/10 A cus-tom ROS2 node
  []
 
 
-Underfull \hbox (badness 2359) in paragraph at lines 90--91
+Underfull \hbox (badness 2359) in paragraph at lines 126--127
 \OT1/ptm/m/n/10 (util/collect[]metrics.py) sub-scribes to the /map topic at
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 96--98
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 132--134
 []\OT1/ptm/m/n/10 Current ex-plo-ration con-fig-u-ra-tion (ex-
  []
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-
-<figures/coverage_comparison.pdf, id=95, 859.52846pt x 281.40886pt>
+<figures/coverage_comparison.pdf, id=104, 859.52846pt x 281.40886pt>
 File: figures/coverage_comparison.pdf Graphic file (type pdf)
 <use figures/coverage_comparison.pdf>
-Package pdftex.def Info: figures/coverage_comparison.pdf  used on input line 14
+Package pdftex.def Info: figures/coverage_comparison.pdf  used on input line 17
 4.
 (pdftex.def)             Requested size: 252.0pt x 82.5039pt.
 
-Underfull \hbox (badness 1661) in paragraph at lines 157--158
-[]\OT1/ptm/b/n/10 Parameter Sen-si-tiv-ity: \OT1/ptm/m/n/10 The cur-rent plan-n
-er[]frequency
- []
-
-
 
 [2
-pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
- been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.166     \item \textbf
-                       {Limited parameter sweep:} We have not systematically...
-
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.166     \item \textbf
-                       {Limited parameter sweep:} We have not systematically...
- <./figures/coverage_comparison.pdf>]
-Underfull \hbox (badness 3333) in paragraph at lines 178--179
+l.182 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
+ been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.182 
+      ]
+Underfull \hbox (badness 1571) in paragraph at lines 187--188
+[]\OT1/ptm/m/n/10 Figure []3[] vi-su-al-izes the spa-tial evo-lu-tion across th
+ree
+ []
+
+<figures/Progress_1of6.png, id=124, 1266.7325pt x 635.87563pt>
+File: figures/Progress_1of6.png Graphic file (type png)
+<use figures/Progress_1of6.png>
+Package pdftex.def Info: figures/Progress_1of6.png  used on input line 191.
+(pdftex.def)             Requested size: 159.95874pt x 80.28957pt.
+<figures/Progress_3of6.png, id=126, 1267.73625pt x 633.86812pt>
+File: figures/Progress_3of6.png Graphic file (type png)
+<use figures/Progress_3of6.png>
+Package pdftex.def Info: figures/Progress_3of6.png  used on input line 192.
+(pdftex.def)             Requested size: 159.95874pt x 79.97806pt.
+<figures/Progress_6of6.png, id=127, 1263.72125pt x 635.37375pt>
+File: figures/Progress_6of6.png Graphic file (type png)
+<use figures/Progress_6of6.png>
+Package pdftex.def Info: figures/Progress_6of6.png  used on input line 193.
+(pdftex.def)             Requested size: 159.95874pt x 80.4201pt.
+
+
+
+Underfull \hbox (badness 3333) in paragraph at lines 235--236
 \OT1/ptm/m/n/10 1.0 Hz), min[]frontier[]size (0.3-1.5m), and scor-ing
  []
 
 
-Underfull \hbox (badness 1546) in paragraph at lines 193--194
+Underfull \hbox (badness 1546) in paragraph at lines 250--251
 []\OT1/ptm/m/n/10 Investigate multi-robot ex-plo-ration us-ing map[]merge
+ []
+
+
+
+[3
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.251 \end{itemize}
+                    <./figures/coverage_comparison.pdf>]
+Underfull \hbox (badness 2126) in paragraph at lines 280--281
+\OT1/ptm/m/n/10 and com-pu-ta-tional pro-fil-ing to pro-duce a ro-bust, well-
  []
 
 
@@ -619,36 +662,44 @@ Before submitting the final camera ready copy, remember to:
 
 
 
-[3] (./milestone1_report.aux)
+[4
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.306 \end{document}
+                     <./figures/Progress_1of6.png> <./figures/Progress_3of6.png
+> <./figures/Progress_6of6.png>] (./milestone1_report.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `milestone1_report.out' has not changed.
-(rerunfilecheck)             Checksum: F52AC1AF935DA73C1AFB882CA31A6F0D;2720.
+(rerunfilecheck)             Checksum: C8E13DDFF823067247B88C44B46AB308;2992.
  ) 
 Here is how much of TeX's memory you used:
- 11132 strings out of 473190
- 174396 string characters out of 5715801
- 591512 words of memory out of 5000000
- 34217 multiletter control sequences out of 15000+600000
- 596006 words of font info for 102 fonts, out of 8000000 for 9000
+ 11206 strings out of 473190
+ 175815 string characters out of 5715801
+ 595175 words of memory out of 5000000
+ 34277 multiletter control sequences out of 15000+600000
+ 598114 words of font info for 107 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,9n,79p,784b,527s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,9n,79p,784b,521s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 ></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><
 /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
 usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></us
 r/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/
 local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/lo
-cal/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texliv
-e/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2025/te
-xmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/f
-onts/type1/urw/times/utmri8a.pfb>
-Output written on milestone1_report.pdf (3 pages, 143808 bytes).
+cal/texlive/2025/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texl
+ive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2025/t
+exmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2025/texmf-dist
+/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/typ
+e1/urw/times/utmri8a.pfb>
+Output written on milestone1_report.pdf (4 pages, 799147 bytes).
 PDF statistics:
- 230 PDF objects out of 1000 (max. 8388607)
- 157 compressed objects within 2 object streams
- 37 named destinations out of 1000 (max. 500000)
- 150 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 262 PDF objects out of 1000 (max. 8388607)
+ 180 compressed objects within 2 object streams
+ 44 named destinations out of 1000 (max. 500000)
+ 173 words of extra memory for PDF output out of 10000 (max. 10000000)
 
