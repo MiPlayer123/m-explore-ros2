@@ -45,18 +45,20 @@ Through hands-on development, we refined our focus to three interconnected chall
 
 \subsection{Refined Objectives}
 
-Based on early implementation experience, our specific objectives for this project are:
+Based on early implementation experience, our specific objectives are:
 
 \begin{enumerate}
-\item \textbf{Deploy functional exploration system:} Integrate m-explore-ros2 with Nav2 and SLAM backends (slam\_toolbox/cartographer) in simulation (\textit{Completed}).
+\item \textbf{Deploy functional exploration system:} Integrate m-explore-ros2 with Nav2 and SLAM backends (\textit{Completed}).
 
-\item \textbf{Implement performance monitoring:} Create real-time metrics collection for coverage, exploration rate, and efficiency analysis (\textit{Completed}).
+\item \textbf{Implement performance monitoring:} Create real-time metrics collection (\textit{Completed}).
 
-\item \textbf{Conduct comparative analysis:} Quantify autonomous vs. manual exploration to establish baseline performance (\textit{In Progress}).
+\item \textbf{Conduct comparative analysis:} Quantify autonomous vs. manual exploration (\textit{Completed}).
 
-\item \textbf{Optimize exploration parameters:} Systematically tune frontier selection criteria, planning frequency, and navigation parameters to improve exploration speed (\textit{Milestone 2}).
+\item \textbf{Optimize exploration parameters:} Tune frontier selection, planning frequency, navigation parameters (\textit{Milestone 2}).
 
-\item \textbf{Evaluate multi-environment generalization:} Test performance across varied environment complexities and sizes (\textit{Milestone 2 \& Final}).
+\item \textbf{Implement advanced algorithms:} Deploy information gain calculation and Hungarian algorithm for multi-robot coordination (\textit{Milestone 2 \& Final}).
+
+\item \textbf{Multi-robot capabilities:} Implement map merging and coordination strategies (\textit{Final}).
 \end{enumerate}
 
 \section{Technical Implementation}
@@ -217,11 +219,13 @@ Key limitations: (1) single environment testing, (2) simulation only, (3) no sys
 
 \textbf{Multi-Environment Evaluation:} Test in 3-5 environments (open world, maze, house, warehouse), measure coverage/time/efficiency, analyze failure modes.
 
-\textbf{Advanced Features:} Implement dynamic parameter adaptation, explore alternative frontier heuristics, investigate multi-robot exploration.
+\textbf{Advanced Algorithm Implementation:} Implement information gain calculation for frontier selection to replace distance-based scoring. Integrate Hungarian algorithm for optimal frontier-robot assignment in multi-robot scenarios.
+
+\textbf{Multi-Robot Coordination:} Develop multi-robot spawn framework, implement map merging using the multirobot\_map\_merge component, and design coordination strategies to avoid redundant exploration.
 
 \subsection{Final Report Deliverables}
 
-Expected deliverables: (1) performance characterization across 5+ environments, (2) optimized parameters with ablation studies, (3) comparison with alternative strategies, (4) real-world deployment analysis, and (5) open-source code release.
+Expected deliverables: (1) performance characterization across 5+ environments, (2) optimized parameters with ablation studies, (3) information gain-based frontier selection implementation, (4) multi-robot coordination with Hungarian algorithm and map merging, (5) comparison with alternative exploration strategies, and (6) open-source code release with comprehensive documentation.
 
 \subsection{Risk Mitigation}
 
