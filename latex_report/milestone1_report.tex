@@ -26,40 +26,34 @@
 \maketitle
 
 \begin{abstract}
-This milestone report presents our progress in implementing and evaluating an autonomous exploration system for mobile robots using ROS2. We adapted the m-explore package, a frontier-based exploration algorithm, and successfully deployed it in simulation with the TurtleBot3 platform. Our preliminary results demonstrate automated exploration achieving 74.3\% environment coverage in 185 seconds, outperforming manual teleoperation by 2.2$\times$ in exploration efficiency. We integrated SLAM, navigation, and exploration components into a cohesive system and developed metrics collection tools to quantify exploration performance. Key challenges identified include exploration speed optimization and parameter tuning for different environments.
+This milestone report presents our progress in implementing and evaluating an autonomous exploration system for mobile robots using ROS2. We adapted the m-explore package, a frontier-based exploration algorithm, debugged critical issues preventing exploration, and successfully deployed it in simulation with the TurtleBot3 platform. Through systematic experimentation comparing automated vs. manual exploration, our results demonstrate automated exploration achieving 74.3\% environment coverage in 185 seconds, outperforming manual teleoperation by 2.2$\times$ in exploration efficiency. We integrated SLAM, navigation, and exploration components into a cohesive system, developed metrics collection infrastructure, and established baseline performance for our multi-robot coordination project. This work provides the foundation for implementing information-theoretic task allocation in Milestone 2.
 \end{abstract}
 
 \IEEEpeerreviewmaketitle
 
 \section{Introduction}
 
-Autonomous exploration enables robots to systematically discover and map unknown environments without human intervention, critical for search and rescue, planetary exploration, and infrastructure inspection. The frontier-based paradigm~\cite{yamauchi1997frontier}, directing robots toward boundaries between known and unknown regions, remains dominant due to its simplicity and effectiveness.
-
-Our project implements and analyzes frontier-based exploration in ROS2, adapting the m-explore package with contemporary SLAM and navigation stacks. We have integrated the complete pipeline, deployed it in simulation with TurtleBot3, and conducted systematic evaluation. This report details our technical implementation, presents quantitative results comparing autonomous vs. manual exploration, and identifies optimization opportunities including initialization delays and parameter sensitivity.
+Autonomous exploration enables robots to systematically discover and map unknown environments, critical for search and rescue, planetary exploration, and infrastructure inspection. The frontier-based paradigm~\cite{yamauchi1997frontier}, directing robots toward boundaries between known and unknown regions, remains dominant due to its simplicity and effectiveness. Our project implements frontier-based exploration in ROS2, establishing baseline single-robot performance before scaling to multi-robot coordination with information-theoretic task allocation.
 
 \section{Problem Refinement \& Objectives}
 
 \subsection{Evolved Problem Statement}
 
-Through hands-on development, we refined our focus to three interconnected challenges: (1) \textbf{System Integration}—coordinating SLAM, Nav2, and frontier detection into a robust pipeline; (2) \textbf{Performance Optimization}—addressing exploration speed bottlenecks observed in initial trials where the robot explores "suuuper slowly"; and (3) \textbf{Quantitative Evaluation}—developing metrics to assess performance across environments and configurations.
+Our original proposal targeted multi-robot frontier exploration with information-theoretic task allocation to reduce redundant coverage by 20\% compared to nearest-frontier baselines. Through initial development, we identified critical foundational work: establishing baseline single-robot performance, implementing robust metrics collection, and validating the existing m-explore package before scaling to multi-robot coordination. This milestone focuses on: (1) \textbf{Baseline System Validation}—proving single-robot exploration functionality and performance measurement infrastructure; (2) \textbf{Performance Characterization}—quantifying baseline exploration efficiency to establish comparison metrics for future multi-robot improvements; and (3) \textbf{Infrastructure Development}—building the foundation for information-gain calculation and multi-robot coordination.
 
-\subsection{Refined Objectives}
+\subsection{Project Objectives and Progress}
 
-Based on early implementation experience, our specific objectives are:
+Our original proposal defined three measurable objectives for the complete project:
 
 \begin{enumerate}
-\item \textbf{Deploy functional exploration system:} Integrate m-explore-ros2 with Nav2 and SLAM backends (\textit{Completed}).
+\item \textbf{Reduce redundant exploration by 20\%} using information gain estimation (vs. nearest-frontier baseline) (\textit{Final}).
 
-\item \textbf{Implement performance monitoring:} Create real-time metrics collection (\textit{Completed}).
+\item \textbf{Achieve 95\% environment coverage} in equal or less time through dynamic multi-robot task reallocation (\textit{Final}).
 
-\item \textbf{Conduct comparative analysis:} Quantify autonomous vs. manual exploration (\textit{Completed}).
-
-\item \textbf{Optimize exploration parameters:} Tune frontier selection, planning frequency, navigation parameters (\textit{Milestone 2}).
-
-\item \textbf{Implement advanced algorithms:} Deploy information gain calculation and Hungarian algorithm for multi-robot coordination (\textit{Milestone 2 \& Final}).
-
-\item \textbf{Multi-robot capabilities:} Implement map merging and coordination strategies (\textit{Final}).
+\item \textbf{Maintain 80\% map merging success rate} across three test environments with limited initial overlap (\textit{Final}).
 \end{enumerate}
+
+\textbf{Milestone 1 Completed Work:} To achieve these objectives, we first established the baseline system. Completed deliverables include: (1) single-robot exploration deployment with m-explore-ros2, Nav2, and Cartographer SLAM; (2) automated metrics collection infrastructure tracking coverage over time; and (3) baseline performance characterization comparing autonomous (74.3\% coverage, 185s) vs. manual exploration (63.3\%, 354s), establishing the comparison benchmark for measuring future multi-robot improvements.
 
 \section{Technical Implementation}
 
@@ -94,32 +88,25 @@ $\downarrow$ \\
 
 The architecture comprises four tightly coupled components:
 
-\textbf{SLAM Backend:} We use ROS2 Cartographer for real-time mapping and localization. The SLAM system subscribes to laser scan data (\texttt{/scan}) and odometry, publishing occupancy grid maps at 5Hz that distinguish free space (-1: unknown, 0: free, 100: occupied) and robot pose estimates via TF transforms.
+\textbf{SLAM Backend:} ROS2 Cartographer subscribes to laser scans (\texttt{/scan}) and odometry, publishing occupancy grid maps at 5Hz that distinguish free space (0), occupied (100), and unknown (-1) cells, along with robot pose estimates via TF transforms.
 
 \textbf{Navigation Stack (Nav2):} Handles path planning and obstacle avoidance using the Hybrid A* planner and DWB local planner. The Nav2 costmap\_2d layer merges static map data with dynamic obstacle information, applying inflation layers for safety margins around obstacles.
 
-\textbf{Frontier Detection Algorithm:} The core explore\_lite node performs frontier identification through a two-stage process:
-\begin{enumerate}
-    \item \textit{Boundary Detection:} Scan the occupancy grid to identify cells adjacent to both free (value 0) and unknown (value -1) space.
-    \item \textit{Connected Component Analysis:} Group adjacent frontier cells into distinct frontier regions using flood-fill.
-    \item \textit{Filtering:} Discard frontiers smaller than min\_frontier\_size threshold or inaccessible due to obstacles.
-\end{enumerate}
+\textbf{Frontier Detection:} The explore\_lite node identifies frontiers through: (1) boundary detection—scanning the occupancy grid to identify cells adjacent to both free and unknown space, (2) connected component analysis—grouping adjacent frontier cells using flood-fill, and (3) filtering—discarding frontiers smaller than min\_frontier\_size or inaccessible due to obstacles.
 
-This approach efficiently identifies exploration candidates while avoiding computational overhead from processing every grid cell.
-
-\textbf{Frontier Selection \& Goal Sending:} Frontiers are scored using a weighted combination:
+\textbf{Frontier Selection:} Frontiers are scored using a weighted combination:
 \begin{equation}
     \text{score} = \alpha \cdot \text{size} - \beta \cdot \text{distance} + \gamma \cdot \text{orientation}
 \end{equation}
-where $\alpha$ (gain\_scale = 1.0) prioritizes larger unexplored regions, $\beta$ (potential\_scale = 3.0) penalizes distant frontiers to minimize travel time, and $\gamma$ (orientation\_scale = 0.0, disabled) would favor frontiers aligned with robot heading. The highest-scoring frontier becomes the navigation goal sent to Nav2's NavigateToPose action server. The system monitors goal progress and recomputes frontiers every 6.7 seconds (planner\_frequency = 0.15 Hz) or when navigation fails.
+where $\alpha$ (gain\_scale = 1.0) prioritizes larger unexplored regions, $\beta$ (potential\_scale = 3.0) penalizes distant frontiers to minimize travel time, and $\gamma$ (orientation\_scale = 0.0, disabled) would favor frontiers aligned with robot heading. The highest-scoring frontier becomes the navigation goal sent to Nav2's NavigateToPose action server. The system recomputes frontiers every 6.7 seconds (planner\_frequency = 0.15 Hz) or when navigation fails.
 
 \subsection{Implementation Details}
 
-\textbf{Launch Automation:} We developed a bash script (util/start\_exploration.sh) that orchestrates the complete system startup: (1) Gazebo simulation with TurtleBot3 Waffle, (2) Cartographer SLAM, (3) Nav2 navigation stack, and (4) explore\_lite node with automated metrics collection.
+\textbf{Bug Fixes:} Initial deployment revealed that explore\_lite was not actively exploring. Debugging identified a bug in the exploration node that prevented proper goal sending to Nav2. After fixing this issue, the system performed autonomous exploration correctly.
 
-\textbf{Metrics Collection:} A custom ROS2 node (util/collect\_metrics.py) subscribes to the /map topic at 10Hz, computing coverage as the percentage of known cells (free or occupied) relative to total map area. Data is logged to JSON format with timestamps for post-processing.
+\textbf{Launch Automation:} We developed a bash script (util/start\_exploration.sh) that orchestrates the complete system startup: (1) Gazebo simulation with TurtleBot3 Waffle, (2) Cartographer SLAM, (3) Nav2 navigation stack, and (4) explore\_lite node with automated metrics collection. This enables repeatable experiments for baseline comparison.
 
-\textbf{Visualization:} Frontier markers are published to the explore/frontiers topic as MarkerArray messages, enabling real-time visualization in RViz2 to debug frontier selection behavior.
+\textbf{Metrics Collection:} A custom ROS2 node (util/collect\_metrics.py) subscribes to the /map topic at 10Hz, computing coverage as the percentage of known cells (free or occupied) relative to total map area. Data is logged to JSON format with timestamps for post-processing and visualization.
 
 \subsection{Key Parameters}
 
@@ -170,42 +157,34 @@ Efficiency Ratio & \textbf{2.24$\times$} & 1.00$\times$ \\
 \label{fig:coverage}
 \end{figure}
 
-\textbf{Coverage Performance:} The automated system achieved 11\% higher peak coverage (74.3\% vs. 63.3\%), demonstrating more systematic exploration compared to human operators who may miss regions. The final automated map includes all major rooms and corridors in the TurtleBot3 World environment.
+\textbf{Coverage Performance:} The automated system achieved 11\% higher peak coverage (74.3\% vs. 63.3\%), demonstrating more systematic exploration compared to human operators.
 
-\textbf{Exploration Speed:} Automated exploration completed in roughly half the time (185s vs. 354s), yielding a 2.24$\times$ efficiency advantage. This dramatic speedup stems from optimal frontier selection and direct path planning without human reaction time delays.
+\textbf{Exploration Speed:} Automated exploration completed in roughly half the time (185s vs. 354s), yielding a 2.24$\times$ efficiency advantage from optimal frontier selection without human reaction delays.
 
-\textbf{Temporal Behavior:} Figure~\ref{fig:coverage} reveals contrasting exploration dynamics. Automated exploration (left) exhibits three distinct phases: (1) initialization delay (0-50s) with minimal coverage while SLAM stabilizes, (2) rapid exploration phase (50-100s) with smooth 40\% coverage increase as optimal paths are executed, and (3) saturation phase (100-185s) where coverage plateaus at 74\%. In contrast, manual exploration (right) shows irregular, stepwise progression throughout the entire 354s duration, reflecting intermittent human control inputs, navigation pauses, and suboptimal path choices that collectively reduce exploration efficiency by over 50\%.
+\textbf{Temporal Behavior:} Figure~\ref{fig:coverage} reveals contrasting dynamics. Automated exploration exhibits three phases: (1) initialization (0-50s), (2) rapid exploration (50-100s) with 40\% coverage increase, and (3) saturation (100-185s) plateauing at 74\%. Manual exploration shows irregular progression throughout 354s, reflecting intermittent control inputs and suboptimal path choices.
 
 \subsection{Exploration Progression Analysis}
 
-Figure~\ref{fig:progression} visualizes the spatial evolution across three key phases, showing both SLAM-generated maps (left) and Gazebo simulation (right) for each time point.
+Figure~\ref{fig:progression} visualizes spatial evolution across three key phases. Initial phase shows limited map knowledge with multiple surrounding frontiers. Mid-exploration reveals hexagonal environment structure with frontiers clustering at room entrances. Final state approaches saturation with all major obstacles mapped; only narrow gaps remain unexplored.
 
-\begin{figure*}[t]
+\begin{figure}[h]
 \centering
-\includegraphics[width=0.31\textwidth]{figures/Progress_1of6.png}\hfill
-\includegraphics[width=0.31\textwidth]{figures/Progress_3of6.png}\hfill
-\includegraphics[width=0.31\textwidth]{figures/Progress_6of6.png}
-\caption{Exploration progression (left to right): initial phase with limited coverage, mid-exploration revealing corridor structure, and final saturation state. RViz shows occupancy grids (cyan=free, purple=occupied, gray=unknown) with frontier markers (cyan circles) and costmap inflation layers.}
+\includegraphics[width=\columnwidth]{figures/Progress_3of6.png}
+\caption{Mid-exploration phase showing environment structure emerging. RViz displays occupancy grid (cyan=free, purple=occupied, gray=unknown) with frontier markers (cyan circles) and costmap inflation layers around obstacles.}
 \label{fig:progression}
-\end{figure*}
-
-\textbf{Initial Phase:} The robot starts with limited map knowledge. Multiple frontiers surround the initial position. SLAM uncertainty is high beyond immediate sensor range.
-
-\textbf{Mid-Exploration:} The hexagonal environment structure emerges. Frontiers cluster at room entrances. Costmap inflation layers demonstrate Nav2's obstacle avoidance margins.
-
-\textbf{Final State:} Coverage approaches saturation. Remaining frontiers are filtered by min\_frontier\_size. All major obstacles and corridors are mapped; only narrow gaps remain unexplored.
+\end{figure}
 
 \subsection{Analysis \& Observations}
 
-\textbf{Initial Delay Analysis:} The 50-second startup delay (visible in Figure~\ref{fig:coverage}) suggests SLAM map initialization rather than navigation issues. This delay is common in particle filter-based SLAM requiring sufficient sensor data for confident pose estimates. The initial 10\% coverage represents immediate sensor field-of-view, while exploration begins after map confidence exceeds Nav2's costmap threshold.
+\textbf{System Integration:} The 50-second startup delay (visible in Figure~\ref{fig:coverage}) reflects the time required for all ROS2 components to launch, initialize, and establish communication. The initial 10\% coverage represents the immediate sensor field-of-view before autonomous exploration begins. After fixing the explore\_lite bug that initially prevented exploration, the system executes frontier-based navigation correctly.
 
-\textbf{Coverage Saturation:} Neither condition achieved full coverage ($>$95\%). Analysis reveals two causes: (1) narrow corridors ($<$0.75m) rejected by min\_frontier\_size, and (2) costmap inflation blocking paths to remaining frontiers. Reducing the size threshold could improve coverage but risks navigation failures.
+\textbf{Coverage Saturation:} Neither condition achieved full coverage ($>$95\%). Analysis reveals two causes: (1) narrow corridors ($<$0.75m) rejected by min\_frontier\_size, and (2) costmap inflation blocking paths to remaining frontiers. Reducing the size threshold could improve coverage but risks navigation failures in constrained spaces.
 
-\textbf{Computational Performance:} The low planner\_frequency (0.15 Hz) causes frontier recomputation only every 6.7s, during which the robot may idle. Increasing to 0.5-1.0 Hz could significantly improve exploration rate. Running in conda (vs. native ROS2) adds Python interpreter overhead.
+\textbf{Computational Performance:} The low planner\_frequency (0.15 Hz) causes frontier recomputation only every 6.7s, during which the robot may idle. Increasing to 0.5-1.0 Hz could significantly improve exploration rate.
 
 \textbf{Frontier Selection:} The scoring function heavily weights distance (potential\_scale = 3.0) over size (gain\_scale = 1.0), favoring nearby frontiers. While minimizing travel time, this may cause suboptimal global patterns. Information-theoretic approaches could improve long-term efficiency.
 
-\textbf{Map Quality:} Figure~\ref{fig:progression} shows clean, accurate maps with minimal drift. Obstacle boundaries are sharp, and loop closure is robust despite 3+ minutes of operation, validating Cartographer's effectiveness.
+\textbf{Map Quality:} Figure~\ref{fig:progression} shows clean, accurate maps with minimal drift. Obstacle boundaries are sharp, and loop closure is robust despite 3+ minutes of operation.
 
 \subsection{Limitations}
 
@@ -215,29 +194,23 @@ Key limitations: (1) single environment testing, (2) simulation only, (3) no sys
 
 \subsection{Milestone 2 Objectives}
 
-\textbf{Performance Optimization:} Profile bottlenecks, investigate initialization delay, conduct parameter sweep (planner\_frequency, min\_frontier\_size, scoring weights), compare native vs. conda ROS2.
+\textbf{Information-Theoretic Frontier Scoring:} Implement information gain calculation: $\text{Score} = w_1 \cdot \text{IG} + w_2 \cdot (1/\text{Distance}) + w_3 \cdot \text{Uniqueness}$, considering frontier size, expected map expansion, and overlap with other robots.
 
-\textbf{Multi-Environment Evaluation:} Test in 3-5 environments (open world, maze, house, warehouse), measure coverage/time/efficiency, analyze failure modes.
+\textbf{Multi-Robot Task Allocation:} Deploy modified Hungarian algorithm using information-theoretic cost matrix. Solve assignment at 0.5-1 Hz over top-K frontiers per robot with redundant exploration penalties.
 
-\textbf{Advanced Algorithm Implementation:} Implement information gain calculation for frontier selection to replace distance-based scoring. Integrate Hungarian algorithm for optimal frontier-robot assignment in multi-robot scenarios.
+\textbf{Multi-Robot Coordination:} Develop two-robot spawn system, integrate multirobot\_map\_merge for confidence-based map merging with ICP, implement distributed architecture.
 
-\textbf{Multi-Robot Coordination:} Develop multi-robot spawn framework, implement map merging using the multirobot\_map\_merge component, and design coordination strategies to avoid redundant exploration.
+\textbf{Baseline Optimization:} Optimize planner\_frequency and parameters based on Milestone 1 findings.
 
-\subsection{Final Report Deliverables}
+\subsection{Final Deliverables \& Risks}
 
-Expected deliverables: (1) performance characterization across 5+ environments, (2) optimized parameters with ablation studies, (3) information gain-based frontier selection implementation, (4) multi-robot coordination with Hungarian algorithm and map merging, (5) comparison with alternative exploration strategies, and (6) open-source code release with comprehensive documentation.
+Expected deliverables: (1) complete multi-robot ROS package with information gain scoring, Hungarian task allocation, and map merging; (2) evaluation across three environments demonstrating $\geq$20\% redundancy reduction; (3) ablation studies on key components; (4) scalability testing with 2-4 robots.
 
-\subsection{Risk Mitigation}
-
-\textbf{Risk:} Computational constraints prevent real-time exploration. \textbf{Mitigation:} Optimize frontier search algorithms, reduce planner frequency, or migrate to more powerful hardware.
-
-\textbf{Risk:} Limited environment diversity in simulation. \textbf{Mitigation:} Use existing Gazebo world repositories and procedurally generated environments.
-
-\textbf{Risk:} Time constraints for real-world deployment. \textbf{Mitigation:} Prioritize simulation results; real-world tests are optional stretch goals.
+\textbf{Risks:} Map merging failure (mitigation: fallback to known poses, confidence thresholds), Hungarian overhead (mitigation: top-K sparsification), bandwidth constraints (mitigation: compressed map deltas).
 
 \section{Conclusion}
 
-We successfully implemented a functional autonomous exploration system in ROS2, achieving 74.3\% coverage with 2.24$\times$ higher efficiency than manual teleoperation. Key achievements include robust SLAM-navigation-frontier detection integration, automated metrics infrastructure, and comprehensive behavior characterization across exploration phases. Analysis revealed optimization opportunities: the 50-second initialization delay suggests SLAM warm-start strategies, while low planner\_frequency (0.15 Hz) represents an addressable bottleneck. Milestone 2 will focus on multi-environment testing, parameter optimization, and computational profiling to establish performance baselines for frontier-based exploration in ROS2.
+We successfully established the baseline single-robot exploration system for our multi-robot project. After debugging critical explore\_lite issues and developing systematic evaluation infrastructure, we achieved 74.3\% coverage with 2.24$\times$ efficiency vs. manual control. This milestone validates our foundation: SLAM-navigation-frontier integration works robustly, automated launch scripts enable repeatable experiments, and metrics collection provides quantitative measurement. Critical findings inform Milestone 2: the 50-second initialization impacts multi-robot synchronization, planner\_frequency (0.15 Hz) needs optimization, and the 74\% ceiling establishes our improvement target. Milestone 2 will implement information gain scoring, Hungarian task allocation, and two-robot coordination to achieve our 20\% redundancy reduction objective.
 
 \section*{Acknowledgments}
 
