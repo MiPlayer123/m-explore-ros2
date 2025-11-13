@@ -1,8 +1,11 @@
 {
-	"name": "Dev container (macOS)",
-	"dockerComposeFile": "docker-compose.macos.yml",
+	"name": "Dev container",
+	"dockerComposeFile": "docker-compose.yml",
 	"service": "m-explore-ros2-humble",
 	"workspaceFolder": "/workspace/ros_ws",
+	"runArgs": [
+		"--runtime=nvidia"
+	],
 	"settings": {
 		"terminal.integrated.automationShell.linux": "/bin/bash",
 	},
