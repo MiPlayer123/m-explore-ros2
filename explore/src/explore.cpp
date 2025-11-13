@@ -62,12 +62,14 @@ Explore::Explore()
 {
   double timeout;
   double min_frontier_size;
+  double information_gain_scale;
   this->declare_parameter<float>("planner_frequency", 1.0);
   this->declare_parameter<float>("progress_timeout", 30.0);
   this->declare_parameter<bool>("visualize", false);
   this->declare_parameter<float>("potential_scale", 1e-3);
   this->declare_parameter<float>("orientation_scale", 0.0);
   this->declare_parameter<float>("gain_scale", 1.0);
+  this->declare_parameter<float>("information_gain_scale", 5.0);
   this->declare_parameter<float>("min_frontier_size", 0.5);
   this->declare_parameter<bool>("return_to_init", false);
 
@@ -77,6 +79,7 @@ Explore::Explore()
   this->get_parameter("potential_scale", potential_scale_);
   this->get_parameter("orientation_scale", orientation_scale_);
   this->get_parameter("gain_scale", gain_scale_);
+  this->get_parameter("information_gain_scale", information_gain_scale);
   this->get_parameter("min_frontier_size", min_frontier_size);
   this->get_parameter("return_to_init", return_to_init_);
   this->get_parameter("robot_base_frame", robot_base_frame_);
@@ -88,7 +91,8 @@ Explore::Explore()
 
   search_ = frontier_exploration::FrontierSearch(costmap_client_.getCostmap(),
                                                  potential_scale_, gain_scale_,
-                                                 min_frontier_size, logger_);
+                                                 min_frontier_size, logger_,
+                                                 information_gain_scale);
 
   if (visualize_) {
     marker_array_publisher_ =

@@ -5,10 +5,14 @@
     costmap_topic: map
     costmap_updates_topic: map_updates
     visualize: true
-    planner_frequency: 0.15
+    planner_frequency: 0.5  # Increased from 0.15 based on M1 findings
     progress_timeout: 30.0
-    potential_scale: 3.0
-    orientation_scale: 0.0
-    gain_scale: 1.0
+
+    # Frontier scoring weights (lower cost = higher priority)
+    potential_scale: 1.0        # Weight for distance to frontier
+    orientation_scale: 0.0      # Weight for robot orientation (unused)
+    gain_scale: 1.0             # Weight for frontier size (deprecated, use information_gain_scale)
+    information_gain_scale: 5.0 # Weight for information-theoretic gain (NEW)
+
     transform_tolerance: 0.3
-    min_frontier_size: 0.75
+    min_frontier_size: 0.5  # Reduced from 0.75 for better coverage

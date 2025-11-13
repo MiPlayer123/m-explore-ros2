@@ -1,0 +1,30 @@
+{
+  "single_robot": {
+    "final_coverage": 74.2,
+    "total_time": 184.9,
+    "time_to_50": 79.9,
+    "time_to_90": null,
+    "time_to_95": null,
+    "coverage_rate": 0.33153846153846156,
+    "init_delay": 54.9,
+    "plateau_start": 4.9
+  },
+  "multi_robot_estimates": {
+    "num_robots": 2,
+    "redundancy_assumed": 30.0,
+    "effective_robots": 1.4,
+    "estimated_time_to_50": 162.62290354656943,
+    "estimated_time_to_90": 248.801226383825,
+    "estimated_time_to_95": 259.57351673848194,
+    "target_redundancy": 24.0,
+    "target_effective_robots": 1.52,
+    "expected_speedup": 1.0857142857142859,
+    "target_time_to_50": 149.78425326657708,
+    "time_savings_50": 12.83865027999235,
+    "target_time_to_90": 229.15902430089142,
+    "time_savings_90": 19.64220208293358,
+    "target_time_to_95": 239.0808706801807,
+    "time_savings_95": 20.492646058301233
+  },
+  "source_file": "metrics_auto.json"
+}

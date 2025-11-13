@@ -3,6 +3,8 @@
 
 #include <geometry_msgs/msg/point.hpp>
 #include <mutex>
+#include <unordered_set>
+#include <cmath>
 
 #include "nav2_costmap_2d/cost_values.hpp"
 
@@ -14,10 +16,12 @@ using nav2_costmap_2d::NO_INFORMATION;
 
 FrontierSearch::FrontierSearch(nav2_costmap_2d::Costmap2D* costmap,
                                double potential_scale, double gain_scale,
-                               double min_frontier_size, rclcpp::Logger logger)
+                               double min_frontier_size, rclcpp::Logger logger,
+                               double information_gain_scale)
   : costmap_(costmap)
   , potential_scale_(potential_scale)
   , gain_scale_(gain_scale)
+  , information_gain_scale_(information_gain_scale)
   , min_frontier_size_(min_frontier_size)
   , logger_(logger)
 {
@@ -84,8 +88,9 @@ FrontierSearch::searchFrom(geometry_msgs::msg::Point position)
     }
   }
 
-  // set costs of frontiers
+  // Calculate information gain and set costs of frontiers
   for (auto& frontier : frontier_list) {
+    frontier.information_gain = calculateInformationGain(frontier);
     frontier.cost = frontierCost(frontier);
   }
   std::sort(
@@ -191,8 +196,103 @@ bool FrontierSearch::isNewFrontierCell(unsigned int idx,
 
 double FrontierSearch::frontierCost(const Frontier& frontier)
 {
-  return (potential_scale_ * frontier.min_distance *
-          costmap_->getResolution()) -
-         (gain_scale_ * frontier.size * costmap_->getResolution());
+  /*
+   * Frontier Cost Function (Lower cost = Higher priority)
+   *
+   * Formula: cost = α×distance - β×information_gain - γ×size
+   *
+   * Components:
+   * 1. Distance penalty: Prefer nearby frontiers (reduces travel time)
+   * 2. Information gain reward: Prefer frontiers with high IG (more unknown cells visible)
+   * 3. Size reward: Prefer larger frontiers (backward compatibility)
+   *
+   * The negative signs make IG and size into rewards (higher values → lower cost → higher priority)
+   */
+
+  double distance_cost = potential_scale_ * frontier.min_distance * costmap_->getResolution();
+  double ig_reward = information_gain_scale_ * frontier.information_gain;
+  double size_reward = gain_scale_ * frontier.size * costmap_->getResolution();
+
+  return distance_cost - ig_reward - size_reward;
+}
+
+double FrontierSearch::calculateInformationGain(const Frontier& frontier)
+{
+  /*
+   * Information Gain Calculation via Raycasting
+   *
+   * Simulates LiDAR sensing from frontier centroid to estimate how many
+   * unknown cells would be revealed if robot moved to this frontier.
+   *
+   * Algorithm:
+   * 1. Cast rays in 360° around frontier centroid (simulating LiDAR)
+   * 2. For each ray up to LIDAR_MAX_RANGE (3.5m):
+   *    - Trace line using Bresenham's algorithm
+   *    - Count unknown (NO_INFORMATION) cells encountered
+   *    - Stop at obstacles or max range
+   * 3. Return total count of unique unknown cells visible
+   *
+   * Higher IG = more unexplored area visible = better exploration target
+   */
+
+  double wx = frontier.centroid.x;
+  double wy = frontier.centroid.y;
+
+  // Convert centroid to map coordinates
+  unsigned int mx, my;
+  if (!costmap_->worldToMap(wx, wy, mx, my)) {
+    // Centroid outside map bounds, return zero gain
+    return 0.0;
+  }
+
+  // Track which cells we've already counted (avoid double-counting)
+  std::unordered_set<unsigned int> counted_cells;
+
+  double resolution = costmap_->getResolution();
+  double max_range_cells = LIDAR_MAX_RANGE / resolution;
+
+  // Cast rays in 360 degrees
+  double angle_increment = 2.0 * M_PI / LIDAR_NUM_RAYS;
+
+  for (int ray = 0; ray < LIDAR_NUM_RAYS; ++ray) {
+    double angle = ray * angle_increment;
+    double ray_dx = cos(angle);
+    double ray_dy = sin(angle);
+
+    // Bresenham-style ray tracing
+    for (double range = 0.0; range < max_range_cells; range += 0.5) {
+      int test_x = static_cast<int>(mx + range * ray_dx);
+      int test_y = static_cast<int>(my + range * ray_dy);
+
+      // Check bounds
+      if (test_x < 0 || test_x >= static_cast<int>(size_x_) ||
+          test_y < 0 || test_y >= static_cast<int>(size_y_)) {
+        break;  // Ray left map bounds
+      }
+
+      unsigned int test_idx = costmap_->getIndex(test_x, test_y);
+      unsigned char cost = map_[test_idx];
+
+      // Stop ray at lethal obstacles (can't see through walls)
+      if (cost >= LETHAL_OBSTACLE) {
+        break;
+      }
+
+      // Count unknown cells
+      if (cost == NO_INFORMATION) {
+        counted_cells.insert(test_idx);
+      }
+    }
+  }
+
+  // Information gain = number of unique unknown cells visible
+  double ig = static_cast<double>(counted_cells.size());
+
+  // Apply frontier size weighting (larger frontiers have more potential)
+  // This matches the proposal formula: IG(f) = Σ(unknown_cells) × frontier_size × occlusion_weight
+  double size_weight = std::sqrt(static_cast<double>(frontier.size));  // Square root to avoid over-weighting
+  double occlusion_weight = 1.0;  // Could be enhanced with line-of-sight analysis
+
+  return ig * size_weight * occlusion_weight;
 }
 }  // namespace frontier_exploration
