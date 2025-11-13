@@ -72,6 +72,7 @@ Explore::Explore()
   this->declare_parameter<float>("information_gain_scale", 5.0);
   this->declare_parameter<float>("min_frontier_size", 0.5);
   this->declare_parameter<bool>("return_to_init", false);
+  this->declare_parameter<std::string>("robot_base_frame", "base_link");
 
   this->get_parameter("planner_frequency", planner_frequency_);
   this->get_parameter("progress_timeout", timeout);
@@ -101,6 +102,12 @@ Explore::Explore()
                                                                      "s",
                                                                      10);
   }
+
+  // Publisher for frontier array (for coordinator)
+  frontier_array_publisher_ =
+      this->create_publisher<explore_msgs::msg::FrontierArray>("explore/"
+                                                               "frontiers_array",
+                                                               10);
 
   // Subscription to resume or stop exploration
   resume_subscription_ = this->create_subscription<std_msgs::msg::Bool>(
@@ -241,6 +248,50 @@ void Explore::visualizeFrontiers(
   marker_array_publisher_->publish(markers_msg);
 }
 
+void Explore::publishFrontierArray(
+    const std::vector<frontier_exploration::Frontier>& frontiers)
+{
+  /*
+   * Publish frontiers as FrontierArray message for coordinator.
+   * Converts C++ Frontier struct to ROS2 message format.
+   */
+  explore_msgs::msg::FrontierArray msg;
+  msg.header.stamp = this->now();
+  msg.header.frame_id = costmap_client_.getGlobalFrameID();
+
+  // Get robot namespace for identification
+  std::string ns = this->get_namespace();
+  if (ns.empty() || ns == "/") {
+    msg.robot_id = "robot_default";
+  } else {
+    // Remove leading slash if present
+    msg.robot_id = (ns[0] == '/') ? ns.substr(1) : ns;
+  }
+
+  int id = 0;
+  for (const auto& frontier : frontiers) {
+    explore_msgs::msg::Frontier frontier_msg;
+    frontier_msg.id = id++;
+    frontier_msg.robot_id = msg.robot_id;
+    frontier_msg.size = frontier.size;
+    frontier_msg.centroid = frontier.centroid;
+    frontier_msg.initial = frontier.initial;
+    frontier_msg.middle = frontier.middle;
+    frontier_msg.min_distance = frontier.min_distance;
+    frontier_msg.information_gain = frontier.information_gain;
+    frontier_msg.cost = frontier.cost;
+    frontier_msg.points = frontier.points;
+    frontier_msg.header = msg.header;
+
+    msg.frontiers.push_back(frontier_msg);
+  }
+
+  frontier_array_publisher_->publish(msg);
+
+  RCLCPP_DEBUG(logger_, "Published %lu frontiers from %s",
+               frontiers.size(), msg.robot_id.c_str());
+}
+
 void Explore::makePlan()
 {
   // find frontiers
@@ -262,6 +313,9 @@ void Explore::makePlan()
   if (visualize_) {
     visualizeFrontiers(frontiers);
   }
+
+  // publish frontiers for coordinator
+  publishFrontierArray(frontiers);
 
   // find non blacklisted frontier
   auto frontier =

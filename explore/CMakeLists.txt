@@ -42,6 +42,7 @@ find_package(nav_msgs REQUIRED)
 find_package(map_msgs REQUIRED)
 find_package(visualization_msgs REQUIRED)
 find_package(nav2_costmap_2d REQUIRED)
+find_package(explore_msgs REQUIRED)
 
 
 set(DEPENDENCIES
@@ -56,6 +57,7 @@ set(DEPENDENCIES
   map_msgs
   nav2_costmap_2d
   visualization_msgs
+  explore_msgs
 )
 
 include_directories(

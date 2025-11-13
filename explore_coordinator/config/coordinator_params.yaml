@@ -1,0 +1,15 @@
+/**:
+  ros__parameters:
+    robot_names: ['robot1', 'robot2']
+    coordination_frequency: 2.0  # Hz - how often to recompute assignments
+
+    # Cost function weights
+    distance_weight: 1.0  # Weight for distance to frontier
+    information_gain_weight: 5.0  # Weight for information gain reward
+
+    # Anti-oscillation parameters
+    history_penalty: 0.5  # Penalty for recently assigned frontiers
+    history_window: 5  # Remember last N assignments
+    min_reassignment_time: 10.0  # Minimum seconds between reassignments
+
+    use_sim_time: true

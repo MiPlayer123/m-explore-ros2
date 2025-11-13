@@ -54,6 +54,8 @@
 #include <string>
 #include <vector>
 #include <visualization_msgs/msg/marker_array.hpp>
+#include <explore_msgs/msg/frontier.hpp>
+#include <explore_msgs/msg/frontier_array.hpp>
 
 #include "nav2_msgs/action/navigate_to_pose.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
@@ -98,6 +100,12 @@ private:
   void visualizeFrontiers(
       const std::vector<frontier_exploration::Frontier>& frontiers);
 
+  /**
+   * @brief Publish frontiers as FrontierArray message for coordinator
+   */
+  void publishFrontierArray(
+      const std::vector<frontier_exploration::Frontier>& frontiers);
+
   bool goalOnBlacklist(const geometry_msgs::msg::Point& goal);
 
   NavigationGoalHandle::SharedPtr navigation_goal_handle_;
@@ -109,6 +117,8 @@ private:
 
   rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr
       marker_array_publisher_;
+  rclcpp::Publisher<explore_msgs::msg::FrontierArray>::SharedPtr
+      frontier_array_publisher_;
   rclcpp::Logger logger_;
   tf2_ros::Buffer tf_buffer_;
   tf2_ros::TransformListener tf_listener_;

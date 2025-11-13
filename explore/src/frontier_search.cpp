@@ -5,6 +5,7 @@
 #include <mutex>
 #include <unordered_set>
 #include <cmath>
+#include <queue>
 
 #include "nav2_costmap_2d/cost_values.hpp"
 

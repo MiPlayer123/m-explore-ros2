@@ -4,6 +4,7 @@
 #include <geometry_msgs/msg/point_stamped.hpp>
 #include <geometry_msgs/msg/polygon_stamped.hpp>
 #include <rclcpp/rclcpp.hpp>
+#include <queue>
 
 #include "nav2_costmap_2d/costmap_2d_ros.hpp"
 
