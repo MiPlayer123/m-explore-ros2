@@ -1,0 +1,1415 @@
+{
+  "mode": "hungarian",
+  "start_time": 1763434498.1121073,
+  "duration": 72.84867930412292,
+  "robot_ids": [
+    "robot1",
+    "robot2"
+  ],
+  "data_points": [
+    {
+      "time": 1.0,
+      "coverage": 0.0,
+      "mode": "hungarian",
+      "redundancy": 0.0,
+      "robot_contributions": {},
+      "robot1_coverage": 0.0,
+      "robot2_coverage": 0.0
+    },
+    {
+      "time": 2.0,
+      "coverage": 0.0,
+      "mode": "hungarian",
+      "redundancy": 0.0,
+      "robot_contributions": {},
+      "robot1_coverage": 0.0,
+      "robot2_coverage": 0.0
+    },
+    {
+      "time": 3.0,
+      "coverage": 0.0,
+      "mode": "hungarian",
+      "redundancy": 0.0,
+      "robot_contributions": {},
+      "robot1_coverage": 0.0,
+      "robot2_coverage": 0.0
+    },
+    {
+      "time": 4.0,
+      "coverage": 0.0,
+      "mode": "hungarian",
+      "redundancy": 0.0,
+      "robot_contributions": {},
+      "robot1_coverage": 0.0,
+      "robot2_coverage": 0.0
+    },
+    {
+      "time": 5.0,
+      "coverage": 36.98,
+      "mode": "hungarian",
+      "redundancy": 0.0,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 952,
+          "unique_contribution": 952,
+          "unique_percentage": 100.0
+        },
+        "robot2": {
+          "total_explored": 0,
+          "unique_contribution": 0,
+          "unique_percentage": 0.0
+        }
+      },
+      "robot1_coverage": 36.98,
+      "robot2_coverage": 0.0
+    },
+    {
+      "time": 6.0,
+      "coverage": 38.35,
+      "mode": "hungarian",
+      "redundancy": 31.92,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 952,
+          "unique_contribution": 312,
+          "unique_percentage": 22.857142857142858
+        },
+        "robot2": {
+          "total_explored": 1053,
+          "unique_contribution": 413,
+          "unique_percentage": 30.256410256410255
+        }
+      },
+      "robot1_coverage": 36.98,
+      "robot2_coverage": 39.73
+    },
+    {
+      "time": 7.0,
+      "coverage": 39.78,
+      "mode": "hungarian",
+      "redundancy": 31.95,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 952,
+          "unique_contribution": 311,
+          "unique_percentage": 22.783882783882785
+        },
+        "robot2": {
+          "total_explored": 1054,
+          "unique_contribution": 413,
+          "unique_percentage": 30.256410256410255
+        }
+      },
+      "robot1_coverage": 38.66,
+      "robot2_coverage": 40.9
+    },
+    {
+      "time": 8.0,
+      "coverage": 42.16,
+      "mode": "hungarian",
+      "redundancy": 30.21,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 1068,
+          "unique_contribution": 427,
+          "unique_percentage": 28.831870357866308
+        },
+        "robot2": {
+          "total_explored": 1054,
+          "unique_contribution": 413,
+          "unique_percentage": 27.88656313301823
+        }
+      },
+      "robot1_coverage": 43.42,
+      "robot2_coverage": 40.9
+    },
+    {
+      "time": 9.0,
+      "coverage": 45.58,
+      "mode": "hungarian",
+      "redundancy": 29.53,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 1068,
+          "unique_contribution": 406,
+          "unique_percentage": 25.696202531645568
+        },
+        "robot2": {
+          "total_explored": 1174,
+          "unique_contribution": 512,
+          "unique_percentage": 32.40506329113924
+        }
+      },
+      "robot1_coverage": 43.42,
+      "robot2_coverage": 47.73
+    },
+    {
+      "time": 10.0,
+      "coverage": 53.94,
+      "mode": "hungarian",
+      "redundancy": 35.82,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 1512,
+          "unique_contribution": 550,
+          "unique_percentage": 31.90255220417633
+        },
+        "robot2": {
+          "total_explored": 1174,
+          "unique_contribution": 212,
+          "unique_percentage": 12.296983758700696
+        }
+      },
+      "robot1_coverage": 60.15,
+      "robot2_coverage": 47.73
+    },
+    {
+      "time": 11.0,
+      "coverage": 63.98,
+      "mode": "hungarian",
+      "redundancy": 42.7,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 1512,
+          "unique_contribution": 129,
+          "unique_percentage": 6.950431034482758
+        },
+        "robot2": {
+          "total_explored": 1727,
+          "unique_contribution": 344,
+          "unique_percentage": 18.53448275862069
+        }
+      },
+      "robot1_coverage": 60.15,
+      "robot2_coverage": 67.8
+    },
+    {
+      "time": 12.0,
+      "coverage": 74.09,
+      "mode": "hungarian",
+      "redundancy": 45.02,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 1733,
+          "unique_contribution": 138,
+          "unique_percentage": 7.084188911704311
+        },
+        "robot2": {
+          "total_explored": 1810,
+          "unique_contribution": 215,
+          "unique_percentage": 11.036960985626283
+        }
+      },
+      "robot1_coverage": 73.6,
+      "robot2_coverage": 74.58
+    },
+    {
+      "time": 13.0,
+      "coverage": 76.43,
+      "mode": "hungarian",
+      "redundancy": 45.8,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 1817,
+          "unique_contribution": 156,
+          "unique_percentage": 7.934893184130214
+        },
+        "robot2": {
+          "total_explored": 1810,
+          "unique_contribution": 149,
+          "unique_percentage": 7.57884028484232
+        }
+      },
+      "robot1_coverage": 78.29,
+      "robot2_coverage": 74.58
+    },
+    {
+      "time": 14.0,
+      "coverage": 78.37,
+      "mode": "hungarian",
+      "redundancy": 46.61,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 1833,
+          "unique_contribution": 127,
+          "unique_percentage": 6.499488229273285
+        },
+        "robot2": {
+          "total_explored": 1827,
+          "unique_contribution": 121,
+          "unique_percentage": 6.1924257932446265
+        }
+      },
+      "robot1_coverage": 79.69,
+      "robot2_coverage": 77.05
+    },
+    {
+      "time": 15.0,
+      "coverage": 79.03,
+      "mode": "hungarian",
+      "redundancy": 46.62,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 1833,
+          "unique_contribution": 114,
+          "unique_percentage": 5.7926829268292686
+        },
+        "robot2": {
+          "total_explored": 1854,
+          "unique_contribution": 135,
+          "unique_percentage": 6.859756097560976
+        }
+      },
+      "robot1_coverage": 79.69,
+      "robot2_coverage": 78.37
+    },
+    {
+      "time": 16.0,
+      "coverage": 80.96,
+      "mode": "hungarian",
+      "redundancy": 46.94,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 1880,
+          "unique_contribution": 109,
+          "unique_percentage": 5.444555444555445
+        },
+        "robot2": {
+          "total_explored": 1893,
+          "unique_contribution": 122,
+          "unique_percentage": 6.093906093906094
+        }
+      },
+      "robot1_coverage": 81.68,
+      "robot2_coverage": 80.24
+    },
+    {
+      "time": 17.0,
+      "coverage": 81.58,
+      "mode": "hungarian",
+      "redundancy": 46.98,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 1890,
+          "unique_contribution": 108,
+          "unique_percentage": 5.370462456489309
+        },
+        "robot2": {
+          "total_explored": 1903,
+          "unique_contribution": 121,
+          "unique_percentage": 6.016907011437096
+        }
+      },
+      "robot1_coverage": 82.38,
+      "robot2_coverage": 80.77
+    },
+    {
+      "time": 18.0,
+      "coverage": 82.22,
+      "mode": "hungarian",
+      "redundancy": 47.06,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 1904,
+          "unique_contribution": 108,
+          "unique_percentage": 5.346534653465347
+        },
+        "robot2": {
+          "total_explored": 1912,
+          "unique_contribution": 116,
+          "unique_percentage": 5.742574257425743
+        }
+      },
+      "robot1_coverage": 83.33,
+      "robot2_coverage": 81.1
+    },
+    {
+      "time": 19.0,
+      "coverage": 82.82,
+      "mode": "hungarian",
+      "redundancy": 47.14,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 1925,
+          "unique_contribution": 114,
+          "unique_percentage": 5.612998522895126
+        },
+        "robot2": {
+          "total_explored": 1917,
+          "unique_contribution": 106,
+          "unique_percentage": 5.219103889709502
+        }
+      },
+      "robot1_coverage": 84.43,
+      "robot2_coverage": 81.22
+    },
+    {
+      "time": 20.0,
+      "coverage": 82.87,
+      "mode": "hungarian",
+      "redundancy": 47.12,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 1925,
+          "unique_contribution": 114,
+          "unique_percentage": 5.610236220472441
+        },
+        "robot2": {
+          "total_explored": 1918,
+          "unique_contribution": 107,
+          "unique_percentage": 5.265748031496063
+        }
+      },
+      "robot1_coverage": 84.43,
+      "robot2_coverage": 81.32
+    },
+    {
+      "time": 21.0,
+      "coverage": 85.1,
+      "mode": "hungarian",
+      "redundancy": 46.31,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2044,
+          "unique_contribution": 209,
+          "unique_percentage": 9.826046074283028
+        },
+        "robot2": {
+          "total_explored": 1918,
+          "unique_contribution": 83,
+          "unique_percentage": 3.902209685002351
+        }
+      },
+      "robot1_coverage": 88.89,
+      "robot2_coverage": 81.32
+    },
+    {
+      "time": 22.0,
+      "coverage": 85.42,
+      "mode": "hungarian",
+      "redundancy": 46.48,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2044,
+          "unique_contribution": 195,
+          "unique_percentage": 9.159229685298262
+        },
+        "robot2": {
+          "total_explored": 1934,
+          "unique_contribution": 85,
+          "unique_percentage": 3.9924847346171912
+        }
+      },
+      "robot1_coverage": 88.89,
+      "robot2_coverage": 81.95
+    },
+    {
+      "time": 23.0,
+      "coverage": 87.3,
+      "mode": "hungarian",
+      "redundancy": 46.66,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2121,
+          "unique_contribution": 229,
+          "unique_percentage": 10.587147480351364
+        },
+        "robot2": {
+          "total_explored": 1934,
+          "unique_contribution": 42,
+          "unique_percentage": 1.9417475728155338
+        }
+      },
+      "robot1_coverage": 92.64,
+      "robot2_coverage": 81.95
+    },
+    {
+      "time": 24.0,
+      "coverage": 88.61,
+      "mode": "hungarian",
+      "redundancy": 47.16,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2125,
+          "unique_contribution": 184,
+          "unique_percentage": 8.459770114942529
+        },
+        "robot2": {
+          "total_explored": 1991,
+          "unique_contribution": 50,
+          "unique_percentage": 2.2988505747126435
+        }
+      },
+      "robot1_coverage": 92.87,
+      "robot2_coverage": 84.34
+    },
+    {
+      "time": 25.0,
+      "coverage": 88.61,
+      "mode": "hungarian",
+      "redundancy": 47.16,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2125,
+          "unique_contribution": 184,
+          "unique_percentage": 8.459770114942529
+        },
+        "robot2": {
+          "total_explored": 1991,
+          "unique_contribution": 50,
+          "unique_percentage": 2.2988505747126435
+        }
+      },
+      "robot1_coverage": 92.87,
+      "robot2_coverage": 84.34
+    },
+    {
+      "time": 26.0,
+      "coverage": 90.27,
+      "mode": "hungarian",
+      "redundancy": 47.95,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2125,
+          "unique_contribution": 110,
+          "unique_percentage": 5.029721079103795
+        },
+        "robot2": {
+          "total_explored": 2077,
+          "unique_contribution": 62,
+          "unique_percentage": 2.8349336991312297
+        }
+      },
+      "robot1_coverage": 92.97,
+      "robot2_coverage": 87.57
+    },
+    {
+      "time": 27.0,
+      "coverage": 90.45,
+      "mode": "hungarian",
+      "redundancy": 47.98,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2125,
+          "unique_contribution": 108,
+          "unique_percentage": 4.938271604938271
+        },
+        "robot2": {
+          "total_explored": 2079,
+          "unique_contribution": 62,
+          "unique_percentage": 2.8349336991312297
+        }
+      },
+      "robot1_coverage": 92.99,
+      "robot2_coverage": 87.91
+    },
+    {
+      "time": 28.0,
+      "coverage": 91.21,
+      "mode": "hungarian",
+      "redundancy": 48.09,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2125,
+          "unique_contribution": 88,
+          "unique_percentage": 4.0018190086402905
+        },
+        "robot2": {
+          "total_explored": 2111,
+          "unique_contribution": 74,
+          "unique_percentage": 3.365165984538426
+        }
+      },
+      "robot1_coverage": 93.01,
+      "robot2_coverage": 89.4
+    },
+    {
+      "time": 29.0,
+      "coverage": 91.57,
+      "mode": "hungarian",
+      "redundancy": 48.23,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2125,
+          "unique_contribution": 76,
+          "unique_percentage": 3.456116416552979
+        },
+        "robot2": {
+          "total_explored": 2123,
+          "unique_contribution": 74,
+          "unique_percentage": 3.365165984538426
+        }
+      },
+      "robot1_coverage": 93.01,
+      "robot2_coverage": 90.13
+    },
+    {
+      "time": 30.0,
+      "coverage": 91.66,
+      "mode": "hungarian",
+      "redundancy": 48.25,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2125,
+          "unique_contribution": 75,
+          "unique_percentage": 3.4106412005457027
+        },
+        "robot2": {
+          "total_explored": 2124,
+          "unique_contribution": 74,
+          "unique_percentage": 3.365165984538426
+        }
+      },
+      "robot1_coverage": 93.11,
+      "robot2_coverage": 90.21
+    },
+    {
+      "time": 31.0,
+      "coverage": 91.73,
+      "mode": "hungarian",
+      "redundancy": 48.25,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2125,
+          "unique_contribution": 73,
+          "unique_percentage": 3.3166742389822805
+        },
+        "robot2": {
+          "total_explored": 2128,
+          "unique_contribution": 76,
+          "unique_percentage": 3.452975920036347
+        }
+      },
+      "robot1_coverage": 93.11,
+      "robot2_coverage": 90.35
+    },
+    {
+      "time": 32.0,
+      "coverage": 91.77,
+      "mode": "hungarian",
+      "redundancy": 48.25,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2127,
+          "unique_contribution": 74,
+          "unique_percentage": 3.3605812897366025
+        },
+        "robot2": {
+          "total_explored": 2128,
+          "unique_contribution": 75,
+          "unique_percentage": 3.4059945504087197
+        }
+      },
+      "robot1_coverage": 93.17,
+      "robot2_coverage": 90.36
+    },
+    {
+      "time": 33.0,
+      "coverage": 91.85,
+      "mode": "hungarian",
+      "redundancy": 48.27,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2130,
+          "unique_contribution": 74,
+          "unique_percentage": 3.3590558329550615
+        },
+        "robot2": {
+          "total_explored": 2129,
+          "unique_contribution": 73,
+          "unique_percentage": 3.313663186563777
+        }
+      },
+      "robot1_coverage": 93.31,
+      "robot2_coverage": 90.39
+    },
+    {
+      "time": 34.0,
+      "coverage": 91.97,
+      "mode": "hungarian",
+      "redundancy": 48.31,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2135,
+          "unique_contribution": 75,
+          "unique_percentage": 3.4029038112522683
+        },
+        "robot2": {
+          "total_explored": 2129,
+          "unique_contribution": 69,
+          "unique_percentage": 3.130671506352087
+        }
+      },
+      "robot1_coverage": 93.55,
+      "robot2_coverage": 90.39
+    },
+    {
+      "time": 35.1,
+      "coverage": 92.27,
+      "mode": "hungarian",
+      "redundancy": 48.43,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2136,
+          "unique_contribution": 64,
+          "unique_percentage": 2.901178603807797
+        },
+        "robot2": {
+          "total_explored": 2142,
+          "unique_contribution": 70,
+          "unique_percentage": 3.1731640979147784
+        }
+      },
+      "robot1_coverage": 93.6,
+      "robot2_coverage": 90.94
+    },
+    {
+      "time": 36.0,
+      "coverage": 92.94,
+      "mode": "hungarian",
+      "redundancy": 48.55,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2136,
+          "unique_contribution": 47,
+          "unique_percentage": 2.122854561878952
+        },
+        "robot2": {
+          "total_explored": 2167,
+          "unique_contribution": 78,
+          "unique_percentage": 3.523035230352303
+        }
+      },
+      "robot1_coverage": 93.61,
+      "robot2_coverage": 92.27
+    },
+    {
+      "time": 37.0,
+      "coverage": 93.18,
+      "mode": "hungarian",
+      "redundancy": 48.65,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2136,
+          "unique_contribution": 38,
+          "unique_percentage": 1.7163504968383017
+        },
+        "robot2": {
+          "total_explored": 2176,
+          "unique_contribution": 78,
+          "unique_percentage": 3.523035230352303
+        }
+      },
+      "robot1_coverage": 93.61,
+      "robot2_coverage": 92.75
+    },
+    {
+      "time": 38.0,
+      "coverage": 93.4,
+      "mode": "hungarian",
+      "redundancy": 48.79,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2136,
+          "unique_contribution": 27,
+          "unique_percentage": 1.2195121951219512
+        },
+        "robot2": {
+          "total_explored": 2187,
+          "unique_contribution": 78,
+          "unique_percentage": 3.523035230352303
+        }
+      },
+      "robot1_coverage": 93.63,
+      "robot2_coverage": 93.18
+    },
+    {
+      "time": 39.0,
+      "coverage": 93.53,
+      "mode": "hungarian",
+      "redundancy": 48.88,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2136,
+          "unique_contribution": 19,
+          "unique_percentage": 0.8581752484191508
+        },
+        "robot2": {
+          "total_explored": 2195,
+          "unique_contribution": 78,
+          "unique_percentage": 3.523035230352303
+        }
+      },
+      "robot1_coverage": 93.64,
+      "robot2_coverage": 93.42
+    },
+    {
+      "time": 40.0,
+      "coverage": 93.57,
+      "mode": "hungarian",
+      "redundancy": 48.89,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2137,
+          "unique_contribution": 19,
+          "unique_percentage": 0.8581752484191508
+        },
+        "robot2": {
+          "total_explored": 2195,
+          "unique_contribution": 77,
+          "unique_percentage": 3.4778681120144532
+        }
+      },
+      "robot1_coverage": 93.72,
+      "robot2_coverage": 93.43
+    },
+    {
+      "time": 41.0,
+      "coverage": 93.61,
+      "mode": "hungarian",
+      "redundancy": 48.88,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2138,
+          "unique_contribution": 20,
+          "unique_percentage": 0.9029345372460496
+        },
+        "robot2": {
+          "total_explored": 2195,
+          "unique_contribution": 77,
+          "unique_percentage": 3.4762979683972914
+        }
+      },
+      "robot1_coverage": 93.78,
+      "robot2_coverage": 93.43
+    },
+    {
+      "time": 42.0,
+      "coverage": 93.67,
+      "mode": "hungarian",
+      "redundancy": 48.86,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2140,
+          "unique_contribution": 22,
+          "unique_percentage": 0.9923319801533603
+        },
+        "robot2": {
+          "total_explored": 2195,
+          "unique_contribution": 77,
+          "unique_percentage": 3.473161930536761
+        }
+      },
+      "robot1_coverage": 93.88,
+      "robot2_coverage": 93.45
+    },
+    {
+      "time": 43.0,
+      "coverage": 93.67,
+      "mode": "hungarian",
+      "redundancy": 48.86,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2140,
+          "unique_contribution": 22,
+          "unique_percentage": 0.9923319801533603
+        },
+        "robot2": {
+          "total_explored": 2195,
+          "unique_contribution": 77,
+          "unique_percentage": 3.473161930536761
+        }
+      },
+      "robot1_coverage": 93.88,
+      "robot2_coverage": 93.45
+    },
+    {
+      "time": 44.0,
+      "coverage": 93.58,
+      "mode": "hungarian",
+      "redundancy": 48.49,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2140,
+          "unique_contribution": 37,
+          "unique_percentage": 1.656222023276634
+        },
+        "robot2": {
+          "total_explored": 2197,
+          "unique_contribution": 94,
+          "unique_percentage": 4.207699194270368
+        }
+      },
+      "robot1_coverage": 93.89,
+      "robot2_coverage": 93.28
+    },
+    {
+      "time": 45.0,
+      "coverage": 93.58,
+      "mode": "hungarian",
+      "redundancy": 48.49,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2140,
+          "unique_contribution": 37,
+          "unique_percentage": 1.656222023276634
+        },
+        "robot2": {
+          "total_explored": 2197,
+          "unique_contribution": 94,
+          "unique_percentage": 4.207699194270368
+        }
+      },
+      "robot1_coverage": 93.89,
+      "robot2_coverage": 93.28
+    },
+    {
+      "time": 46.0,
+      "coverage": 93.09,
+      "mode": "hungarian",
+      "redundancy": 48.55,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2141,
+          "unique_contribution": 25,
+          "unique_percentage": 1.1150758251561106
+        },
+        "robot2": {
+          "total_explored": 2217,
+          "unique_contribution": 101,
+          "unique_percentage": 4.504906333630688
+        }
+      },
+      "robot1_coverage": 93.92,
+      "robot2_coverage": 92.25
+    },
+    {
+      "time": 47.0,
+      "coverage": 94.49,
+      "mode": "hungarian",
+      "redundancy": 48.71,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2141,
+          "unique_contribution": 7,
+          "unique_percentage": 0.3115264797507788
+        },
+        "robot2": {
+          "total_explored": 2240,
+          "unique_contribution": 106,
+          "unique_percentage": 4.717400979083222
+        }
+      },
+      "robot1_coverage": 93.92,
+      "robot2_coverage": 95.07
+    },
+    {
+      "time": 48.0,
+      "coverage": 94.5,
+      "mode": "hungarian",
+      "redundancy": 48.71,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2141,
+          "unique_contribution": 7,
+          "unique_percentage": 0.3115264797507788
+        },
+        "robot2": {
+          "total_explored": 2240,
+          "unique_contribution": 106,
+          "unique_percentage": 4.717400979083222
+        }
+      },
+      "robot1_coverage": 93.94,
+      "robot2_coverage": 95.07
+    },
+    {
+      "time": 49.0,
+      "coverage": 94.5,
+      "mode": "hungarian",
+      "redundancy": 48.71,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2141,
+          "unique_contribution": 7,
+          "unique_percentage": 0.3115264797507788
+        },
+        "robot2": {
+          "total_explored": 2240,
+          "unique_contribution": 106,
+          "unique_percentage": 4.717400979083222
+        }
+      },
+      "robot1_coverage": 93.94,
+      "robot2_coverage": 95.07
+    },
+    {
+      "time": 50.0,
+      "coverage": 93.26,
+      "mode": "hungarian",
+      "redundancy": 48.75,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2146,
+          "unique_contribution": 16,
+          "unique_percentage": 0.7146047342563644
+        },
+        "robot2": {
+          "total_explored": 2223,
+          "unique_contribution": 93,
+          "unique_percentage": 4.1536400178651185
+        }
+      },
+      "robot1_coverage": 94.06,
+      "robot2_coverage": 92.47
+    },
+    {
+      "time": 51.0,
+      "coverage": 93.26,
+      "mode": "hungarian",
+      "redundancy": 48.75,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2146,
+          "unique_contribution": 16,
+          "unique_percentage": 0.7146047342563644
+        },
+        "robot2": {
+          "total_explored": 2223,
+          "unique_contribution": 93,
+          "unique_percentage": 4.1536400178651185
+        }
+      },
+      "robot1_coverage": 94.06,
+      "robot2_coverage": 92.47
+    },
+    {
+      "time": 52.0,
+      "coverage": 93.27,
+      "mode": "hungarian",
+      "redundancy": 48.46,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2148,
+          "unique_contribution": 14,
+          "unique_percentage": 0.6167400881057269
+        },
+        "robot2": {
+          "total_explored": 2256,
+          "unique_contribution": 122,
+          "unique_percentage": 5.3744493392070485
+        }
+      },
+      "robot1_coverage": 94.13,
+      "robot2_coverage": 92.42
+    },
+    {
+      "time": 53.0,
+      "coverage": 93.34,
+      "mode": "hungarian",
+      "redundancy": 48.45,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2148,
+          "unique_contribution": 13,
+          "unique_percentage": 0.5721830985915494
+        },
+        "robot2": {
+          "total_explored": 2259,
+          "unique_contribution": 124,
+          "unique_percentage": 5.457746478873239
+        }
+      },
+      "robot1_coverage": 94.13,
+      "robot2_coverage": 92.55
+    },
+    {
+      "time": 54.0,
+      "coverage": 92.94,
+      "mode": "hungarian",
+      "redundancy": 48.48,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2148,
+          "unique_contribution": 15,
+          "unique_percentage": 0.6616674018526687
+        },
+        "robot2": {
+          "total_explored": 2252,
+          "unique_contribution": 119,
+          "unique_percentage": 5.249228054697839
+        }
+      },
+      "robot1_coverage": 94.15,
+      "robot2_coverage": 91.74
+    },
+    {
+      "time": 55.0,
+      "coverage": 93.0,
+      "mode": "hungarian",
+      "redundancy": 48.47,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2148,
+          "unique_contribution": 15,
+          "unique_percentage": 0.6613756613756614
+        },
+        "robot2": {
+          "total_explored": 2253,
+          "unique_contribution": 120,
+          "unique_percentage": 5.291005291005291
+        }
+      },
+      "robot1_coverage": 94.21,
+      "robot2_coverage": 91.79
+    },
+    {
+      "time": 56.0,
+      "coverage": 93.02,
+      "mode": "hungarian",
+      "redundancy": 48.44,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2148,
+          "unique_contribution": 15,
+          "unique_percentage": 0.6607929515418502
+        },
+        "robot2": {
+          "total_explored": 2255,
+          "unique_contribution": 122,
+          "unique_percentage": 5.3744493392070485
+        }
+      },
+      "robot1_coverage": 94.21,
+      "robot2_coverage": 91.83
+    },
+    {
+      "time": 57.0,
+      "coverage": 92.59,
+      "mode": "hungarian",
+      "redundancy": 48.48,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2151,
+          "unique_contribution": 15,
+          "unique_percentage": 0.6607929515418502
+        },
+        "robot2": {
+          "total_explored": 2255,
+          "unique_contribution": 119,
+          "unique_percentage": 5.242290748898679
+        }
+      },
+      "robot1_coverage": 93.35,
+      "robot2_coverage": 91.83
+    },
+    {
+      "time": 58.0,
+      "coverage": 92.77,
+      "mode": "hungarian",
+      "redundancy": 48.39,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2153,
+          "unique_contribution": 15,
+          "unique_percentage": 0.6578947368421052
+        },
+        "robot2": {
+          "total_explored": 2265,
+          "unique_contribution": 127,
+          "unique_percentage": 5.5701754385964914
+        }
+      },
+      "robot1_coverage": 93.38,
+      "robot2_coverage": 92.16
+    },
+    {
+      "time": 59.0,
+      "coverage": 92.8,
+      "mode": "hungarian",
+      "redundancy": 48.42,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2155,
+          "unique_contribution": 15,
+          "unique_percentage": 0.6578947368421052
+        },
+        "robot2": {
+          "total_explored": 2265,
+          "unique_contribution": 125,
+          "unique_percentage": 5.482456140350877
+        }
+      },
+      "robot1_coverage": 93.43,
+      "robot2_coverage": 92.16
+    },
+    {
+      "time": 60.0,
+      "coverage": 93.06,
+      "mode": "hungarian",
+      "redundancy": 48.34,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2155,
+          "unique_contribution": 11,
+          "unique_percentage": 0.48013967699694454
+        },
+        "robot2": {
+          "total_explored": 2280,
+          "unique_contribution": 136,
+          "unique_percentage": 5.936272370144042
+        }
+      },
+      "robot1_coverage": 93.43,
+      "robot2_coverage": 92.7
+    },
+    {
+      "time": 61.0,
+      "coverage": 93.06,
+      "mode": "hungarian",
+      "redundancy": 48.34,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2155,
+          "unique_contribution": 11,
+          "unique_percentage": 0.48013967699694454
+        },
+        "robot2": {
+          "total_explored": 2280,
+          "unique_contribution": 136,
+          "unique_percentage": 5.936272370144042
+        }
+      },
+      "robot1_coverage": 93.43,
+      "robot2_coverage": 92.7
+    },
+    {
+      "time": 62.0,
+      "coverage": 93.06,
+      "mode": "hungarian",
+      "redundancy": 48.34,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2155,
+          "unique_contribution": 11,
+          "unique_percentage": 0.48013967699694454
+        },
+        "robot2": {
+          "total_explored": 2280,
+          "unique_contribution": 136,
+          "unique_percentage": 5.936272370144042
+        }
+      },
+      "robot1_coverage": 93.43,
+      "robot2_coverage": 92.7
+    },
+    {
+      "time": 63.0,
+      "coverage": 93.06,
+      "mode": "hungarian",
+      "redundancy": 48.34,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2155,
+          "unique_contribution": 11,
+          "unique_percentage": 0.48013967699694454
+        },
+        "robot2": {
+          "total_explored": 2280,
+          "unique_contribution": 136,
+          "unique_percentage": 5.936272370144042
+        }
+      },
+      "robot1_coverage": 93.43,
+      "robot2_coverage": 92.7
+    },
+    {
+      "time": 64.0,
+      "coverage": 93.06,
+      "mode": "hungarian",
+      "redundancy": 48.34,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2155,
+          "unique_contribution": 11,
+          "unique_percentage": 0.48013967699694454
+        },
+        "robot2": {
+          "total_explored": 2280,
+          "unique_contribution": 136,
+          "unique_percentage": 5.936272370144042
+        }
+      },
+      "robot1_coverage": 93.43,
+      "robot2_coverage": 92.7
+    },
+    {
+      "time": 65.0,
+      "coverage": 93.08,
+      "mode": "hungarian",
+      "redundancy": 48.33,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2155,
+          "unique_contribution": 11,
+          "unique_percentage": 0.4799301919720768
+        },
+        "robot2": {
+          "total_explored": 2281,
+          "unique_contribution": 137,
+          "unique_percentage": 5.977312390924956
+        }
+      },
+      "robot1_coverage": 93.43,
+      "robot2_coverage": 92.74
+    },
+    {
+      "time": 66.0,
+      "coverage": 91.53,
+      "mode": "hungarian",
+      "redundancy": 48.12,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2155,
+          "unique_contribution": 15,
+          "unique_percentage": 0.6501950585175552
+        },
+        "robot2": {
+          "total_explored": 2292,
+          "unique_contribution": 152,
+          "unique_percentage": 6.588643259644559
+        }
+      },
+      "robot1_coverage": 93.43,
+      "robot2_coverage": 89.62
+    },
+    {
+      "time": 67.0,
+      "coverage": 91.53,
+      "mode": "hungarian",
+      "redundancy": 48.13,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2156,
+          "unique_contribution": 15,
+          "unique_percentage": 0.6501950585175552
+        },
+        "robot2": {
+          "total_explored": 2292,
+          "unique_contribution": 151,
+          "unique_percentage": 6.5452969224100555
+        }
+      },
+      "robot1_coverage": 93.44,
+      "robot2_coverage": 89.62
+    },
+    {
+      "time": 68.0,
+      "coverage": 91.61,
+      "mode": "hungarian",
+      "redundancy": 48.13,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2156,
+          "unique_contribution": 15,
+          "unique_percentage": 0.6501950585175552
+        },
+        "robot2": {
+          "total_explored": 2292,
+          "unique_contribution": 151,
+          "unique_percentage": 6.5452969224100555
+        }
+      },
+      "robot1_coverage": 93.44,
+      "robot2_coverage": 89.79
+    },
+    {
+      "time": 69.0,
+      "coverage": 87.28,
+      "mode": "hungarian",
+      "redundancy": 47.75,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2157,
+          "unique_contribution": 15,
+          "unique_percentage": 0.6399317406143344
+        },
+        "robot2": {
+          "total_explored": 2329,
+          "unique_contribution": 187,
+          "unique_percentage": 7.977815699658702
+        }
+      },
+      "robot1_coverage": 93.47,
+      "robot2_coverage": 81.08
+    },
+    {
+      "time": 70.0,
+      "coverage": 86.0,
+      "mode": "hungarian",
+      "redundancy": 47.22,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2157,
+          "unique_contribution": 15,
+          "unique_percentage": 0.6265664160401002
+        },
+        "robot2": {
+          "total_explored": 2379,
+          "unique_contribution": 237,
+          "unique_percentage": 9.899749373433583
+        }
+      },
+      "robot1_coverage": 93.47,
+      "robot2_coverage": 78.53
+    },
+    {
+      "time": 71.0,
+      "coverage": 86.02,
+      "mode": "hungarian",
+      "redundancy": 47.24,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2160,
+          "unique_contribution": 16,
+          "unique_percentage": 0.6680584551148225
+        },
+        "robot2": {
+          "total_explored": 2379,
+          "unique_contribution": 235,
+          "unique_percentage": 9.812108559498958
+        }
+      },
+      "robot1_coverage": 93.51,
+      "robot2_coverage": 78.53
+    },
+    {
+      "time": 72.0,
+      "coverage": 85.03,
+      "mode": "hungarian",
+      "redundancy": 48.02,
+      "robot_contributions": {
+        "robot1": {
+          "total_explored": 2160,
+          "unique_contribution": 6,
+          "unique_percentage": 0.2572898799313894
+        },
+        "robot2": {
+          "total_explored": 2326,
+          "unique_contribution": 172,
+          "unique_percentage": 7.375643224699828
+        }
+      },
+      "robot1_coverage": 93.51,
+      "robot2_coverage": 76.55
+    }
+  ],
+  "summary": {
+    "final_coverage": 85.03,
+    "max_coverage": 94.5,
+    "total_time": 72.0,
+    "num_samples": 72,
+    "avg_redundancy": 43.457638888888894,
+    "final_redundancy": 48.02
+  }
+}
