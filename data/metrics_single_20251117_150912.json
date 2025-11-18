@@ -1,0 +1,1351 @@
+{
+  "mode": "single",
+  "start_time": 1763410152.4655287,
+  "duration": 267.93150544166565,
+  "robot_ids": [
+    ""
+  ],
+  "data_points": [
+    {
+      "time": 1.0,
+      "coverage": 0.0,
+      "mode": "single"
+    },
+    {
+      "time": 2.0,
+      "coverage": 0.0,
+      "mode": "single"
+    },
+    {
+      "time": 3.0,
+      "coverage": 0.0,
+      "mode": "single"
+    },
+    {
+      "time": 4.0,
+      "coverage": 0.0,
+      "mode": "single"
+    },
+    {
+      "time": 5.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 6.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 7.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 8.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 9.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 10.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 11.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 12.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 13.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 14.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 15.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 16.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 17.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 18.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 19.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 20.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 21.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 22.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 23.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 24.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 25.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 26.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 27.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 28.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 29.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 30.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 31.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 32.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 33.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 34.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 35.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 36.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 37.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 38.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 39.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 40.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 41.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 42.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 43.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 44.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 45.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 46.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 47.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 48.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 49.0,
+      "coverage": 25.27,
+      "mode": "single"
+    },
+    {
+      "time": 50.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 51.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 52.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 53.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 54.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 55.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 56.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 57.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 58.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 59.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 60.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 61.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 62.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 63.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 64.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 65.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 66.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 67.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 68.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 69.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 70.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 71.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 72.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 73.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 74.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 75.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 76.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 77.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 78.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 79.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 80.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 81.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 82.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 83.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 84.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 85.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 86.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 87.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 88.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 89.0,
+      "coverage": 24.43,
+      "mode": "single"
+    },
+    {
+      "time": 90.0,
+      "coverage": 30.57,
+      "mode": "single"
+    },
+    {
+      "time": 91.0,
+      "coverage": 30.57,
+      "mode": "single"
+    },
+    {
+      "time": 92.0,
+      "coverage": 30.57,
+      "mode": "single"
+    },
+    {
+      "time": 93.0,
+      "coverage": 30.57,
+      "mode": "single"
+    },
+    {
+      "time": 94.0,
+      "coverage": 30.57,
+      "mode": "single"
+    },
+    {
+      "time": 95.0,
+      "coverage": 42.73,
+      "mode": "single"
+    },
+    {
+      "time": 96.0,
+      "coverage": 42.73,
+      "mode": "single"
+    },
+    {
+      "time": 97.0,
+      "coverage": 42.73,
+      "mode": "single"
+    },
+    {
+      "time": 98.0,
+      "coverage": 42.73,
+      "mode": "single"
+    },
+    {
+      "time": 99.0,
+      "coverage": 42.73,
+      "mode": "single"
+    },
+    {
+      "time": 100.0,
+      "coverage": 71.38,
+      "mode": "single"
+    },
+    {
+      "time": 101.0,
+      "coverage": 71.38,
+      "mode": "single"
+    },
+    {
+      "time": 102.0,
+      "coverage": 71.38,
+      "mode": "single"
+    },
+    {
+      "time": 103.0,
+      "coverage": 71.38,
+      "mode": "single"
+    },
+    {
+      "time": 104.0,
+      "coverage": 71.38,
+      "mode": "single"
+    },
+    {
+      "time": 105.0,
+      "coverage": 77.62,
+      "mode": "single"
+    },
+    {
+      "time": 106.0,
+      "coverage": 77.62,
+      "mode": "single"
+    },
+    {
+      "time": 107.0,
+      "coverage": 77.62,
+      "mode": "single"
+    },
+    {
+      "time": 108.0,
+      "coverage": 77.62,
+      "mode": "single"
+    },
+    {
+      "time": 109.0,
+      "coverage": 77.62,
+      "mode": "single"
+    },
+    {
+      "time": 110.0,
+      "coverage": 84.5,
+      "mode": "single"
+    },
+    {
+      "time": 111.0,
+      "coverage": 84.5,
+      "mode": "single"
+    },
+    {
+      "time": 112.0,
+      "coverage": 84.5,
+      "mode": "single"
+    },
+    {
+      "time": 113.0,
+      "coverage": 84.5,
+      "mode": "single"
+    },
+    {
+      "time": 114.0,
+      "coverage": 84.5,
+      "mode": "single"
+    },
+    {
+      "time": 115.0,
+      "coverage": 84.5,
+      "mode": "single"
+    },
+    {
+      "time": 116.0,
+      "coverage": 84.5,
+      "mode": "single"
+    },
+    {
+      "time": 117.0,
+      "coverage": 84.5,
+      "mode": "single"
+    },
+    {
+      "time": 118.0,
+      "coverage": 84.5,
+      "mode": "single"
+    },
+    {
+      "time": 119.0,
+      "coverage": 84.5,
+      "mode": "single"
+    },
+    {
+      "time": 120.0,
+      "coverage": 87.75,
+      "mode": "single"
+    },
+    {
+      "time": 121.0,
+      "coverage": 87.75,
+      "mode": "single"
+    },
+    {
+      "time": 122.0,
+      "coverage": 87.75,
+      "mode": "single"
+    },
+    {
+      "time": 123.0,
+      "coverage": 87.75,
+      "mode": "single"
+    },
+    {
+      "time": 124.0,
+      "coverage": 87.75,
+      "mode": "single"
+    },
+    {
+      "time": 125.0,
+      "coverage": 88.78,
+      "mode": "single"
+    },
+    {
+      "time": 126.0,
+      "coverage": 88.78,
+      "mode": "single"
+    },
+    {
+      "time": 127.0,
+      "coverage": 88.78,
+      "mode": "single"
+    },
+    {
+      "time": 128.0,
+      "coverage": 88.78,
+      "mode": "single"
+    },
+    {
+      "time": 129.0,
+      "coverage": 88.78,
+      "mode": "single"
+    },
+    {
+      "time": 130.0,
+      "coverage": 88.43,
+      "mode": "single"
+    },
+    {
+      "time": 131.0,
+      "coverage": 88.43,
+      "mode": "single"
+    },
+    {
+      "time": 132.0,
+      "coverage": 88.43,
+      "mode": "single"
+    },
+    {
+      "time": 133.0,
+      "coverage": 88.43,
+      "mode": "single"
+    },
+    {
+      "time": 134.0,
+      "coverage": 88.43,
+      "mode": "single"
+    },
+    {
+      "time": 135.0,
+      "coverage": 88.43,
+      "mode": "single"
+    },
+    {
+      "time": 136.0,
+      "coverage": 88.43,
+      "mode": "single"
+    },
+    {
+      "time": 137.0,
+      "coverage": 88.43,
+      "mode": "single"
+    },
+    {
+      "time": 138.0,
+      "coverage": 88.43,
+      "mode": "single"
+    },
+    {
+      "time": 139.0,
+      "coverage": 88.43,
+      "mode": "single"
+    },
+    {
+      "time": 140.0,
+      "coverage": 90.43,
+      "mode": "single"
+    },
+    {
+      "time": 141.0,
+      "coverage": 90.43,
+      "mode": "single"
+    },
+    {
+      "time": 142.0,
+      "coverage": 90.43,
+      "mode": "single"
+    },
+    {
+      "time": 143.0,
+      "coverage": 90.43,
+      "mode": "single"
+    },
+    {
+      "time": 144.0,
+      "coverage": 90.43,
+      "mode": "single"
+    },
+    {
+      "time": 145.0,
+      "coverage": 90.43,
+      "mode": "single"
+    },
+    {
+      "time": 146.0,
+      "coverage": 90.43,
+      "mode": "single"
+    },
+    {
+      "time": 147.0,
+      "coverage": 90.43,
+      "mode": "single"
+    },
+    {
+      "time": 148.0,
+      "coverage": 90.43,
+      "mode": "single"
+    },
+    {
+      "time": 149.0,
+      "coverage": 90.43,
+      "mode": "single"
+    },
+    {
+      "time": 150.0,
+      "coverage": 90.78,
+      "mode": "single"
+    },
+    {
+      "time": 151.0,
+      "coverage": 90.78,
+      "mode": "single"
+    },
+    {
+      "time": 152.0,
+      "coverage": 90.78,
+      "mode": "single"
+    },
+    {
+      "time": 153.0,
+      "coverage": 90.78,
+      "mode": "single"
+    },
+    {
+      "time": 154.0,
+      "coverage": 90.78,
+      "mode": "single"
+    },
+    {
+      "time": 155.0,
+      "coverage": 90.78,
+      "mode": "single"
+    },
+    {
+      "time": 156.0,
+      "coverage": 90.78,
+      "mode": "single"
+    },
+    {
+      "time": 157.0,
+      "coverage": 90.78,
+      "mode": "single"
+    },
+    {
+      "time": 158.0,
+      "coverage": 90.78,
+      "mode": "single"
+    },
+    {
+      "time": 159.0,
+      "coverage": 90.78,
+      "mode": "single"
+    },
+    {
+      "time": 160.0,
+      "coverage": 91.0,
+      "mode": "single"
+    },
+    {
+      "time": 161.0,
+      "coverage": 91.0,
+      "mode": "single"
+    },
+    {
+      "time": 162.0,
+      "coverage": 91.0,
+      "mode": "single"
+    },
+    {
+      "time": 163.0,
+      "coverage": 91.0,
+      "mode": "single"
+    },
+    {
+      "time": 164.0,
+      "coverage": 91.0,
+      "mode": "single"
+    },
+    {
+      "time": 165.0,
+      "coverage": 92.57,
+      "mode": "single"
+    },
+    {
+      "time": 166.0,
+      "coverage": 92.57,
+      "mode": "single"
+    },
+    {
+      "time": 167.0,
+      "coverage": 92.57,
+      "mode": "single"
+    },
+    {
+      "time": 168.0,
+      "coverage": 92.57,
+      "mode": "single"
+    },
+    {
+      "time": 169.0,
+      "coverage": 92.57,
+      "mode": "single"
+    },
+    {
+      "time": 170.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 171.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 172.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 173.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 174.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 175.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 176.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 177.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 178.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 179.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 180.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 181.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 182.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 183.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 184.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 185.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 186.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 187.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 188.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 189.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 190.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 191.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 192.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 193.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 194.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 195.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 196.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 197.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 198.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 199.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 200.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 201.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 202.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 203.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 204.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 205.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 206.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 207.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 208.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 209.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 210.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 211.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 212.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 213.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 214.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 215.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 216.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 217.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 218.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 219.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 220.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 221.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 222.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 223.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 224.0,
+      "coverage": 92.65,
+      "mode": "single"
+    },
+    {
+      "time": 225.0,
+      "coverage": 92.71,
+      "mode": "single"
+    },
+    {
+      "time": 226.0,
+      "coverage": 92.71,
+      "mode": "single"
+    },
+    {
+      "time": 227.0,
+      "coverage": 92.71,
+      "mode": "single"
+    },
+    {
+      "time": 228.0,
+      "coverage": 92.71,
+      "mode": "single"
+    },
+    {
+      "time": 229.0,
+      "coverage": 92.71,
+      "mode": "single"
+    },
+    {
+      "time": 230.0,
+      "coverage": 92.85,
+      "mode": "single"
+    },
+    {
+      "time": 231.0,
+      "coverage": 92.85,
+      "mode": "single"
+    },
+    {
+      "time": 232.0,
+      "coverage": 92.85,
+      "mode": "single"
+    },
+    {
+      "time": 233.0,
+      "coverage": 92.85,
+      "mode": "single"
+    },
+    {
+      "time": 234.0,
+      "coverage": 92.85,
+      "mode": "single"
+    },
+    {
+      "time": 235.0,
+      "coverage": 93.0,
+      "mode": "single"
+    },
+    {
+      "time": 236.0,
+      "coverage": 93.0,
+      "mode": "single"
+    },
+    {
+      "time": 237.0,
+      "coverage": 93.0,
+      "mode": "single"
+    },
+    {
+      "time": 238.0,
+      "coverage": 93.0,
+      "mode": "single"
+    },
+    {
+      "time": 239.0,
+      "coverage": 93.0,
+      "mode": "single"
+    },
+    {
+      "time": 240.0,
+      "coverage": 93.26,
+      "mode": "single"
+    },
+    {
+      "time": 241.0,
+      "coverage": 93.26,
+      "mode": "single"
+    },
+    {
+      "time": 242.0,
+      "coverage": 93.26,
+      "mode": "single"
+    },
+    {
+      "time": 243.0,
+      "coverage": 93.26,
+      "mode": "single"
+    },
+    {
+      "time": 244.0,
+      "coverage": 93.26,
+      "mode": "single"
+    },
+    {
+      "time": 245.0,
+      "coverage": 93.33,
+      "mode": "single"
+    },
+    {
+      "time": 246.0,
+      "coverage": 93.33,
+      "mode": "single"
+    },
+    {
+      "time": 247.0,
+      "coverage": 93.33,
+      "mode": "single"
+    },
+    {
+      "time": 248.0,
+      "coverage": 93.33,
+      "mode": "single"
+    },
+    {
+      "time": 249.0,
+      "coverage": 93.33,
+      "mode": "single"
+    },
+    {
+      "time": 250.0,
+      "coverage": 93.47,
+      "mode": "single"
+    },
+    {
+      "time": 251.0,
+      "coverage": 93.47,
+      "mode": "single"
+    },
+    {
+      "time": 252.0,
+      "coverage": 93.47,
+      "mode": "single"
+    },
+    {
+      "time": 253.0,
+      "coverage": 93.47,
+      "mode": "single"
+    },
+    {
+      "time": 254.0,
+      "coverage": 93.47,
+      "mode": "single"
+    },
+    {
+      "time": 255.0,
+      "coverage": 93.63,
+      "mode": "single"
+    },
+    {
+      "time": 256.0,
+      "coverage": 93.63,
+      "mode": "single"
+    },
+    {
+      "time": 257.0,
+      "coverage": 93.63,
+      "mode": "single"
+    },
+    {
+      "time": 258.0,
+      "coverage": 93.63,
+      "mode": "single"
+    },
+    {
+      "time": 259.0,
+      "coverage": 93.63,
+      "mode": "single"
+    },
+    {
+      "time": 260.0,
+      "coverage": 93.63,
+      "mode": "single"
+    },
+    {
+      "time": 261.0,
+      "coverage": 93.63,
+      "mode": "single"
+    },
+    {
+      "time": 262.0,
+      "coverage": 93.63,
+      "mode": "single"
+    },
+    {
+      "time": 263.0,
+      "coverage": 93.63,
+      "mode": "single"
+    },
+    {
+      "time": 264.0,
+      "coverage": 93.63,
+      "mode": "single"
+    },
+    {
+      "time": 265.0,
+      "coverage": 93.63,
+      "mode": "single"
+    },
+    {
+      "time": 266.0,
+      "coverage": 93.63,
+      "mode": "single"
+    },
+    {
+      "time": 267.0,
+      "coverage": 93.63,
+      "mode": "single"
+    }
+  ],
+  "summary": {
+    "final_coverage": 93.63,
+    "max_coverage": 93.63,
+    "total_time": 267.0,
+    "num_samples": 267
+  }
+}
