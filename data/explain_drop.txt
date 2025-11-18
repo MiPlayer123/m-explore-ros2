@@ -1,0 +1,55 @@
+How Coverage % is Calculated
+Formula: Coverage = (Known Cells / Bounding Box Area) × 100
+The calculation works as follows:
+
+The system counts all map cells that aren't marked as "unknown" (value -1)
+It finds the smallest rectangle that contains all known cells (the bounding box)
+Coverage is the percentage of the bounding box that has been explored
+
+
+- Why Coverage Decreases Over Time
+The Bounding Box Problem:
+The coverage percentage can drop because the numerator and denominator change at different rates:
+
+Known cells (numerator) increase gradually as robots explore
+Bounding box area (denominator) can jump instantly when distant areas are discovered
+
+Key Scenarios That Cause Drops:
+Discovery of distant frontiers:
+
+A robot detects an unexplored area far away
+The bounding box instantly expands to include this new point
+Known cell count hasn't increased yet
+Result: Same numerator, much larger denominator = lower percentage
+
+Multi-robot separation:
+
+Two robots explore in opposite directions
+Bounding box must span the distance between them
+Large unexplored gap exists in the middle
+The gap area is included in the bounding box but counts as unexplored
+
+Environment size realization:
+
+Early exploration shows small local area with high coverage
+Later discovery reveals the environment is much larger
+Bounding box expands dramatically
+Coverage drops until robots fill in the new areas
+
+DQN Stage 4 specific issues:
+
+Very large open arena with few obstacles
+Robots quickly discover the far edges
+Huge bounding box created early
+Takes long time to fill the empty space
+
+
+- Why This is Normal
+The drops are calculation artifacts, not actual knowledge loss:
+
+Robots never "forget" explored areas
+Absolute count of known cells always increases
+The percentage drops because the estimate of "total explorable area" increases
+Coverage eventually recovers as robots fill in the gaps
+This behavior is more pronounced in multi-robot systems due to robot separation
+
