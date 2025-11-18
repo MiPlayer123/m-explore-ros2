@@ -5,7 +5,6 @@ Generate publication-quality figures for M2 report
 
 import matplotlib.pyplot as plt
 import numpy as np
-import seaborn as sns
 
 # Set publication style
 plt.rcParams['font.family'] = 'serif'
@@ -16,8 +15,6 @@ plt.rcParams['legend.fontsize'] = 9
 plt.rcParams['xtick.labelsize'] = 9
 plt.rcParams['ytick.labelsize'] = 9
 plt.rcParams['figure.dpi'] = 300
-
-sns.set_palette("colorblind")
 
 def figure_cost_matrix_heatmap():
     """Figure: Example cost matrix for 2 robots, 6 frontiers"""
@@ -171,6 +168,75 @@ def figure_coverage_projection():
     plt.savefig('../latex_report/figures/coverage_projection.png', bbox_inches='tight', dpi=300)
     print("✓ Generated coverage_projection.pdf/png")
 
+def figure_coverage_comparison_m2():
+    """Figure: Coverage comparison for M2 - compact version"""
+    time = np.linspace(0, 250, 100)
+    cov_1r = 74.2 * (1 - np.exp(-time / 60))
+    cov_uncoor = 74.2 * (1 - np.exp(-1.4 * time / 60))
+    cov_coord = 74.2 * (1 - np.exp(-1.52 * time / 60))
+    
+    plt.figure(figsize=(3.5, 2.2))  # Compact for 2-column
+    plt.plot(time, cov_1r, '--', linewidth=2, label='M1 (1R)', color='gray')
+    plt.plot(time, cov_uncoor, '-', linewidth=2, label='Uncoor. (2R, 30%)', color='#ff7f0e')
+    plt.plot(time, cov_coord, '-', linewidth=2.5, label='Coord. (2R, 24%)', color='#2ca02c')
+    plt.axhline(y=50, color='red', linestyle=':', linewidth=0.8, alpha=0.5)
+    plt.axhline(y=74.2, color='red', linestyle=':', linewidth=0.8, alpha=0.5)
+    plt.xlabel('Time (s)')
+    plt.ylabel('Coverage (%)')
+    plt.legend(loc='lower right', fontsize=8)
+    plt.grid(True, alpha=0.3)
+    plt.xlim(0, 250)
+    plt.ylim(0, 80)
+    plt.tight_layout()
+    plt.savefig('../latex_report/figures/coverage_comparison_m2.pdf', bbox_inches='tight')
+    plt.savefig('../latex_report/figures/coverage_comparison_m2.png', bbox_inches='tight', dpi=300)
+    plt.close()
+    print("✓ Generated coverage_comparison_m2.pdf/png")
+
+def figure_redundancy_bar():
+    """Figure: Redundancy bar chart - compact"""
+    categories = ['Uncoord.\n(Baseline)', 'Coordinated\n(M2)', 'Target\n(Stretch)']
+    values = [30, 24, 20]
+    colors = ['#ff7f0e', '#2ca02c', '#1f77b4']
+    
+    plt.figure(figsize=(3.0, 2.0))
+    bars = plt.bar(categories, values, color=colors, alpha=0.7, edgecolor='black')
+    plt.ylabel('Redundancy (%)')
+    plt.ylim(0, 35)
+    plt.axhline(y=30, color='gray', linestyle='--', linewidth=0.8, alpha=0.5)
+    for bar, val in zip(bars, values):
+        plt.text(bar.get_x() + bar.get_width()/2, val + 1, f'{val}%', 
+                ha='center', fontsize=9, fontweight='bold')
+    plt.tight_layout()
+    plt.savefig('../latex_report/figures/redundancy_bar.pdf', bbox_inches='tight')
+    plt.savefig('../latex_report/figures/redundancy_bar.png', bbox_inches='tight', dpi=300)
+    plt.close()
+    print("✓ Generated redundancy_bar.pdf/png")
+
+def figure_cost_matrix_compact():
+    """Figure: Cost matrix heatmap - compact version"""
+    cost_matrix = np.array([[2.3, 5.1, 3.8, 7.2, 4.5, 6.1],
+                            [6.8, 3.2, 7.5, 2.9, 5.7, 4.3]])
+    
+    plt.figure(figsize=(3.0, 1.5))
+    im = plt.imshow(cost_matrix, cmap='RdYlGn_r', aspect='auto', vmin=0, vmax=8)
+    for i in range(2):
+        for j in range(6):
+            plt.text(j, i, f'{cost_matrix[i,j]:.1f}', ha="center", va="center", 
+                    color="black", fontsize=8)
+    plt.xticks(range(6), [f'F{i+1}' for i in range(6)], fontsize=8)
+    plt.yticks(range(2), ['R1', 'R2'], fontsize=8)
+    plt.xlabel('Frontier', fontsize=9)
+    plt.ylabel('Robot', fontsize=9)
+    # Mark optimal assignment
+    plt.plot([0, 3], [0, 1], 'bs', markersize=12, fillstyle='none', linewidth=2)
+    plt.colorbar(im, label='Cost', fraction=0.046, pad=0.04)
+    plt.tight_layout()
+    plt.savefig('../latex_report/figures/cost_matrix_compact.pdf', bbox_inches='tight')
+    plt.savefig('../latex_report/figures/cost_matrix_compact.png', bbox_inches='tight', dpi=300)
+    plt.close()
+    print("✓ Generated cost_matrix_compact.pdf/png")
+
 def figure_architecture_detailed():
     """Generate detailed architecture diagram as text figure"""
     # This would ideally be done in a tool like draw.io or TikZ
@@ -184,6 +250,12 @@ if __name__ == '__main__':
 
     print("Generating publication-quality figures for M2 report...\n")
 
+    # Generate compact figures for 3-page report
+    figure_coverage_comparison_m2()
+    figure_redundancy_bar()
+    figure_cost_matrix_compact()
+    
+    # Generate original figures (for reference)
     figure_cost_matrix_heatmap()
     figure_ig_distribution()
     figure_redundancy_projection()
