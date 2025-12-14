@@ -1,0 +1,30 @@
+{
+  "environment": {
+    "width_m": 12.5,
+    "height_m": 9.0,
+    "area_m2": 112
+  },
+  "results": {
+    "Single Robot (1R)": {
+      "time_to_50": 20.0,
+      "time_to_90": 79.0,
+      "time_to_95": 104.0,
+      "speedup_vs_single": 1.0,
+      "final_coverage": 96.70453382458295
+    },
+    "Two Robot Uncoord (2R)": {
+      "time_to_50": 10.0,
+      "time_to_90": 50.0,
+      "time_to_95": 68.0,
+      "speedup_vs_single": 1.58,
+      "final_coverage": 96.40773718145533
+    },
+    "Two Robot Coord (2R) - Ours": {
+      "time_to_50": 10.0,
+      "time_to_90": 37.0,
+      "time_to_95": 56.0,
+      "speedup_vs_single": 2.135135135135135,
+      "final_coverage": 97.3313888036025
+    }
+  }
+}
