@@ -6,3 +6,35 @@
 build/
 install/
 log/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Claude Code settings
+.claude/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# LaTeX artifacts
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.bbl
+*.blg
+
+# Local data (keep locally, not in git)
+data/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
