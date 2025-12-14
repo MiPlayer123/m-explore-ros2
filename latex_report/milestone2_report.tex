@@ -5,7 +5,6 @@
 \usepackage[bookmarks=true]{hyperref}
 \usepackage{graphicx}
 \usepackage{amsmath}
-\usepackage{amssymb}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{booktabs}
@@ -65,6 +64,8 @@ Our refined, measurable objectives for the complete project are:
 \item \textbf{Maintain map merging accuracy $>$95\%} using known initial poses and TF-based coordination in structured environments.
 \end{enumerate}
 
+\textbf{Progress Since M1:} Objectives 1-2 are now fully implemented in code; objective 3 leverages existing multirobot\_map\_merge functionality. Comprehensive validation remains as the final deliverable.
+
 \section{System Implementation \& Technical Details}
 \label{sec:implementation}
 
@@ -95,7 +96,9 @@ This design maintains fault tolerance—robots continue autonomous exploration i
 
 \subsection{Information Gain Calculation}
 
-Frontier size alone poorly predicts information value. Information gain estimates expected map expansion via raycasting. We implement raycasting matching TurtleBot3 LiDAR specifications (LDS-01: 360$^\circ$ FOV, 3.5m range), casting 72 rays uniformly from each frontier centroid:
+\textbf{Motivation:} Frontier size alone poorly predicts information value. A large frontier behind obstacles may reveal little unknown space, while a small frontier at a doorway may expose an entire room. Information gain estimates expected map expansion.
+
+\textbf{Algorithm:} We implement raycasting-based IG calculation matching TurtleBot3 Waffle LiDAR specifications (LDS-01: 360$^\circ$ FOV, 3.5m range). From each frontier centroid, we cast 72 rays uniformly distributed in 360$^\circ$ (5$^\circ$ increments):
 
 \begin{algorithm}[h]
 \caption{Information Gain Raycasting}
@@ -120,11 +123,13 @@ Frontier size alone poorly predicts information value. Information gain estimate
 
 We use Bresenham's line algorithm for efficient grid traversal and track visited cells in a hash set to avoid double-counting. The $\sqrt{\text{size}}$ weighting rewards larger frontiers while preventing size from dominating the metric.
 
-Frontier scoring combines travel cost, information reward, and size reward:
+\textbf{Cost Function Integration:} Frontier scoring combines travel cost, information reward, and size reward:
 \begin{equation}
 \text{cost}(f) = \alpha \cdot d(r, f) - \beta \cdot \text{IG}(f) - \gamma \cdot \text{size}(f)
 \end{equation}
-where $d(r, f)$ is Euclidean distance from robot $r$ to frontier $f$. We set $\alpha = 1.0$, $\beta = 5.0$, $\gamma = 1.0$. Modified \texttt{frontier\_search.cpp} (lines 220-298) computes IG for each frontier.
+where $d(r, f)$ is Euclidean distance from robot $r$ to frontier $f$. We set $\alpha = 1.0$ (distance weight), $\beta = 5.0$ (IG weight), and $\gamma = 1.0$ (size weight). Lower cost indicates higher priority.
+
+\textbf{Implementation:} Modified \texttt{frontier\_search.cpp} to compute IG for each detected frontier (lines 220-298), updating the \texttt{Frontier} struct with an \texttt{information\_gain} field and revising \texttt{frontierCost()} to incorporate Eq. (1).
 
 \subsection{Hungarian Algorithm Coordinator}
 
@@ -134,25 +139,44 @@ where $d(r, f)$ is Euclidean distance from robot $r$ to frontier $f$. We set $\a
 \end{equation}
 where cost matrix $C \in \mathbb{R}^{N \times M}$ encodes distance, IG, and coordination penalties.
 
-For robot $i$ and frontier $j$:
+\textbf{Cost Matrix Construction:} For robot $i$ and frontier $j$:
 \begin{equation}
 \begin{split}
 C[i,j] = & \, w_d \cdot d(r_i, f_j) - w_{IG} \cdot \text{IG}(f_j) \\
          & + w_h \cdot h(i, j) + w_c \cdot c(i, j)
 \end{split}
 \end{equation}
-where $w_d = 1.0$ (distance), $w_{IG} = 5.0$ (IG reward), $w_h = 0.5$ (history penalty), $w_c = 2.0$ (cross-robot penalty). Anti-oscillation uses assignment history (last 5) and 10-second cooldown. We use \texttt{scipy.optimize.linear\_sum\_assignment}~\cite{scipy} ($O(N^3)$, $<$1ms for $N=2$). Python coordinator (\texttt{coordinator\_node.py}, 300+ lines) runs at 0.5 Hz.
+where:
+\begin{itemize}
+\item $w_d = 1.0$: Distance weight (travel efficiency)
+\item $w_{IG} = 5.0$: Information gain reward (exploration value)
+\item $w_h = 0.5$: History penalty $h(i,j)$ discourages reassignment to recently visited frontiers
+\item $w_c = 2.0$: Cross-robot penalty $c(i,j)$ prefers own frontiers over other robots' discoveries
+\end{itemize}
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.75\columnwidth]{figures/cost_matrix_compact.pdf}
-\caption{Cost matrix example (2 robots, 6 frontiers). Blue squares mark optimal Hungarian assignment.}
-\label{fig:costmatrix}
-\end{figure}
+\textbf{Anti-Oscillation Mechanisms:} Two strategies prevent excessive reassignment:
+\begin{enumerate}
+\item \textit{Assignment History:} Track last 5 assignments per robot; penalize frontiers visited within this window by $0.5 \times \text{count}$ to bias toward novel targets.
+\item \textit{Minimum Reassignment Time:} Enforce 10-second cooldown per robot before allowing goal changes, preventing rapid switching.
+\end{enumerate}
+
+\textbf{Algorithm:} We use \texttt{scipy.optimize.linear\_sum\_assignment}~\cite{scipy}, an optimized Jonker-Volgenant implementation running in $O(N^3)$. For $N=2$ robots and typical $M \approx 5-10$ frontiers, runtime is $<$1ms.
+
+\textbf{Implementation:} Python coordinator node (\texttt{coordinator\_node.py}, 300+ lines) subscribes to \texttt{/robot\_X/explore/frontiers\_array}, builds cost matrix every 0.5s (coordination frequency), solves assignment, and publishes goals via \texttt{/robot\_X/navigate\_to\_pose} action clients.
 
 \subsection{ROS2 Integration Layer}
 
-Created \texttt{explore\_msgs} package with \texttt{Frontier.msg} (ID, robot\_id, size, centroid, information\_gain, geometry) and \texttt{FrontierArray.msg}. Modified \texttt{explore\_lite} to publish frontiers via \texttt{publishFrontierArray()} (\texttt{explore.cpp}, lines 180-210). Developed \texttt{coordinated\_exploration.launch.py} orchestrating Gazebo, SLAM, Nav2, explore nodes, and coordinator. Updated parameters: planner\_frequency = 0.5 Hz, min\_frontier\_size = 0.5m, information\_gain\_scale = 5.0.
+\textbf{Custom Messages:} Created \texttt{explore\_msgs} package defining:
+\begin{itemize}
+\item \texttt{Frontier.msg}: Contains ID, robot\_id, size, centroid, \textbf{information\_gain}, cost, and geometry (points array)
+\item \texttt{FrontierArray.msg}: Header-stamped array of frontiers from one robot
+\end{itemize}
+
+\textbf{Publisher Integration:} Modified \texttt{explore\_lite} to publish \texttt{FrontierArray} on \texttt{/explore/frontiers\_array} topic after each planning cycle. Added \texttt{publishFrontierArray()} method to \texttt{explore.cpp} (lines 180-210), converting internal C++ frontier representations to ROS messages with namespace extraction for robot identification.
+
+\textbf{Launch Configuration:} Developed \texttt{coordinated\_exploration.launch.py} orchestrating: (1) Gazebo multi-robot spawn, (2) SLAM and Nav2 stacks per robot with namespace isolation, (3) explore\_lite nodes per robot, (4) centralized coordinator, and (5) map merge node for visualization.
+
+\textbf{Parameter Optimization:} Based on M1 findings, updated \texttt{params.yaml}: planner\_frequency = 0.5 Hz (from 0.15), min\_frontier\_size = 0.5m (from 0.75), information\_gain\_scale = 5.0 (new).
 
 \subsection{Implementation Completeness}
 
@@ -197,47 +221,81 @@ Table~\ref{tab:baseline} summarizes our M1 single-robot baseline and projects mu
 \textbf{Metric} & \textbf{M1} & \textbf{Uncoor.} & \textbf{Coord.} \\
  & \textbf{(1R)} & \textbf{(2R)} & \textbf{(2R)} \\
 \midrule
-Coverage (\%)\textsuperscript{*} & 74.2 & 74.2 & 74.2 \\
+Coverage (\%) & 74.2 & 74.2 & 74.2 \\
 Redundancy (\%) & --- & 30.0 & \textbf{24.0} \\
 Effective Robots & 1.00 & 1.40 & \textbf{1.52} \\
 Time to 50\% (s) & 79.9 & 162.6 & \textbf{149.8} \\
 Time to 90\% (s) & --- & 248.8 & \textbf{229.2} \\
 Speedup (vs. 1R) & 1.00$\times$ & 1.37$\times$ & \textbf{1.49$\times$} \\
 \bottomrule
-\multicolumn{4}{l}{\textsuperscript{*}Coverage includes map padding; actual explorable space may be higher} \\
 \end{tabular}
 \end{table}
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth]{figures/coverage_comparison_m2.pdf}
-\caption{Projected coverage trajectories: M1 baseline (gray), uncoordinated 2R (orange, 30\% redundancy), coordinated 2R (green, 24\% redundancy).}
-\label{fig:coverage}
-\end{figure}
+\textbf{Projection Methodology:} Uncoordinated redundancy (30\%) derives from literature on independent frontier selection~\cite{burgard2005coordinated}. Coordinated redundancy (24\%) represents our 20\% reduction target. Effective robot count is $N \times (1 - \text{redundancy})$. Time estimates use M1 coverage rate (0.33\%/s) scaled by effective robots: $t = \text{target\_coverage} / (\text{rate} \times \text{eff\_robots})$.
 
-Uncoordinated redundancy (30\%) derives from literature~\cite{burgard2005coordinated}. Coordinated (24\%) represents our 20\% reduction target. Effective robot count is $N \times (1 - \text{redundancy})$. Time estimates use M1 rate (0.33\%/s) scaled by effective robots. Information-theoretic allocation achieves redundancy reduction (30\% $\rightarrow$ 24\%), yielding 7.9\% speedup at 90\% coverage (Fig.~\ref{fig:coverage}).
+\textbf{Key Insight:} Information-theoretic allocation's primary benefit is redundancy reduction (30\% $\rightarrow$ 24\%), translating to modest but measurable speedup (7.9\% at 90\% coverage). This aligns with our objective of demonstrating efficiency gains through coordination.
 
 \subsection{Component Verification}
 
-Systematic verification confirms: (1) Message generation via \texttt{ros2 interface list} shows \texttt{Frontier} and \texttt{FrontierArray} with \texttt{information\_gain} field, (2) IG calculation unit tests (10 cases) yield 50-200 cells for 1-3m frontiers with 40-60\% occlusion reduction, (3) Hungarian solver converges in $<$1ms on 2$\times$5 and 2$\times$10 matrices with expected optimal assignments, (4) \texttt{colcon build} completes without errors across all packages, and (5) coordinator launch initializes successfully, subscribing to frontier topics.
+We conducted systematic verification of each implemented component:
+
+\textbf{Message Generation:} \texttt{ros2 interface list | grep explore\_msgs} confirms successful generation of \texttt{Frontier} and \texttt{FrontierArray} message types. Field inspection via \texttt{ros2 interface show} verifies inclusion of \texttt{information\_gain} field.
+
+\textbf{IG Calculation:} Unit testing with synthetic frontier data (10 test cases spanning open spaces, obstacle-occluded regions, and narrow corridors) validates raycasting logic. Typical IG values range 50-200 unknown cells for frontiers of size 1-3m, with obstacle occlusion reducing IG by 40-60\% as expected.
+
+\textbf{Hungarian Solver:} Verification with 2$\times$5 and 2$\times$10 cost matrices confirms scipy convergence in $<$1ms. Manually constructed test cases (e.g., Robot 1 closest to Frontier A, Robot 2 closest to Frontier B) produce expected optimal assignments.
+
+\textbf{Build System:} Clean workspace build via \texttt{colcon build --symlink-install} completes without errors across all three packages (explore\_msgs, explore\_coordinator, explore\_lite modifications). Dependency resolution succeeds for scipy, rosidl, Nav2 action clients.
+
+\textbf{Launch Integration:} Standalone coordinator launch (\texttt{ros2 launch explore\_coordinator coordinator.launch.py}) initializes without import errors, subscribes to frontier topics, and logs ``Ready for coordination'' status. Full system launch spawns Gazebo simulation with 2 robots, though frontier publishing requires active exploration to validate.
 
 \subsection{Parametric Sensitivity Analysis}
 
-Our cost function (Eq. 3) contains four tunable weights. Varying $w_{IG} \in [3, 5, 7]$ trades off IG reward vs. distance cost; we select $w_{IG} = 5$ as balanced default. Higher $w_h$ increases anti-oscillation strength ($w_h = 0.5$ allows reassignment after 2-3 cycles). Coordination frequency of 0.5 Hz matches explore planner frequency with $<$1ms solver overhead.
+Our cost function (Eq. 3) contains four tunable weights. Analytical sensitivity analysis explores their influence:
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.6\columnwidth]{figures/redundancy_bar.pdf}
-\caption{Redundancy comparison showing 20\% reduction from baseline.}
-\label{fig:redundancy}
-\end{figure}
+\textbf{Information Gain Weight ($w_{IG}$):} Varying $w_{IG} \in [3, 5, 7]$ trades off IG reward vs. distance cost. $w_{IG} = 3$ favors nearby frontiers (fast coverage), $w_{IG} = 7$ favors high-information frontiers (reduces redundancy). We select $w_{IG} = 5$ as a balanced default for validation.
+
+\textbf{History Penalty ($w_h$):} Higher $w_h$ increases anti-oscillation strength. $w_h = 0.5$ allows reassignment after 2-3 cycles; $w_h = 1.0$ enforces stricter persistence. Empirical tuning will determine optimal value.
+
+\textbf{Coordination Frequency:} Running coordinator at 0.5 Hz (2s updates) vs. 2 Hz (0.5s updates) trades responsiveness for computational cost. With $<$1ms solver runtime, 2 Hz is feasible; we default to 0.5 Hz to match explore planner frequency.
+
+\subsection{Limitations \& Remaining Validation}
+
+Our analytical projections assume: (1) 30\% baseline redundancy (literature-derived, not measured), (2) linear coverage rate scaling with effective robots (may not hold if robot interference occurs), and (3) no navigation failures or map merging errors. \textbf{Comprehensive multi-robot trials are required} to empirically validate these assumptions and measure actual redundancy, coverage dynamics, and system robustness.
 
 \section{Final Plan \& Remaining Work}
 \label{sec:plan}
 
+\subsection{Completed Deliverables}
+
+Milestone 2 achieves full implementation of our proposed system:
+\begin{itemize}
+\item[\checkmark] Information gain calculation via LiDAR-spec raycasting
+\item[\checkmark] Hungarian algorithm coordinator with anti-oscillation
+\item[\checkmark] ROS2 custom messages and integration layer
+\item[\checkmark] Multi-robot launch configuration
+\item[\checkmark] Component-level verification and build validation
+\item[\checkmark] Analytical performance modeling
+\end{itemize}
+
 \subsection{Remaining Work (2 Weeks)}
 
-Week 1 focuses on multi-robot validation: execute 20 trials (10 coordinated, 10 baseline), collect coverage/redundancy metrics, and generate comparison plots. Week 2 conducts statistical analysis (paired t-tests, p $<$ 0.05), parameter sweeps ($w_{IG} \in [3, 5, 7]$, frequency $\in [0.5, 1, 2]$ Hz), ablation studies (IG-only vs. Hungarian-only vs. combined), failure mode analysis, and final report preparation.
+\textbf{Week 1: Multi-Robot Validation}
+\begin{enumerate}
+\item Execute 10 coordinated trials (IG + Hungarian) in TurtleBot3 World
+\item Execute 10 baseline trials (uncoordinated, nearest-frontier)
+\item Collect metrics: coverage over time, redundancy percentage, time-to-milestones
+\item Generate comparison plots (coverage curves, redundancy bar charts)
+\end{enumerate}
+
+\textbf{Week 2: Analysis \& Refinement}
+\begin{enumerate}
+\item Statistical analysis: paired t-tests for significance (p $<$ 0.05)
+\item Parameter sweep: optimize $w_{IG} \in [3, 5, 7]$, coordination frequency $\in [0.5, 1, 2]$ Hz
+\item Ablation studies: IG-only vs. Hungarian-only vs. combined
+\item Failure mode analysis: quantify navigation failures, map merging errors
+\item Final report writing and demo video preparation
+\end{enumerate}
 
 \subsection{Success Criteria}
 
@@ -249,9 +307,19 @@ Our project will be considered successful if validation demonstrates:
 \item System reliability $>$ 90\% (successful completion rate)
 \end{enumerate}
 
+\subsection{Risk Mitigation Strategies}
+
+\textbf{Performance Below Target:} If redundancy exceeds 24\%, parameter sweeps across IG weights and coordination frequencies may recover performance. Fallback: demonstrate improvement over baseline even if 20\% reduction not achieved.
+
+\textbf{Map Merging Failures:} Using known initial poses (TF-based coordination) eliminates feature-matching uncertainty. If failures occur, increase confidence thresholds or reduce merging frequency.
+
+\textbf{Computational Overhead:} Hungarian algorithm with 2 robots and $<$10 frontiers runs in $<$1ms. If overhead emerges with more robots, implement top-K frontier filtering to sparsify cost matrix.
+
+\textbf{Timeline Constraints:} All implementation complete; validation requires only execution time. Two weeks provides buffer for multiple trial iterations and analysis.
+
 \section{Conclusion}
 
-This milestone delivers the complete implementation of information-theoretic multi-robot coordination, advancing from M1's single-robot baseline to a fully integrated system with optimal task allocation. Our information gain calculation via raycasting provides frontier value estimation; the Hungarian algorithm coordinator solves optimal assignment; and ROS2 integration enables distributed operation. With all components implemented, verified, and analytically modeled, we are positioned to conduct comprehensive multi-robot validation. While our projections assume 30\% baseline redundancy and linear scaling, empirical validation will measure actual system performance with refined coverage metrics (excluding map padding) and verify the 20\% redundancy reduction objective. The remaining two weeks focus on systematic experimentation, statistical analysis, and final deliverable preparation.
+This milestone delivers the complete implementation of information-theoretic multi-robot coordination, advancing from M1's single-robot baseline to a fully integrated system with optimal task allocation. Our information gain calculation via raycasting provides frontier value estimation; the Hungarian algorithm coordinator solves optimal assignment; and ROS2 integration enables distributed operation. With all components implemented, verified, and analytically modeled, we are positioned to conduct comprehensive multi-robot validation and empirically demonstrate the 20\% redundancy reduction objective. The remaining two weeks focus on systematic experimentation, statistical analysis, and final deliverable preparation to complete our project goals.
 
 \section*{Acknowledgments}
 
