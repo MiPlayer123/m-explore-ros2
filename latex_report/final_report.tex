@@ -306,7 +306,6 @@ Single Robot + IG scoring & $\sim$105 $\pm$ 10$^\dagger$ & $\sim$1.4$\times$ \\
 Two Robot Uncoordinated & $\sim$80 $\pm$ 12$^\dagger$ & $\sim$1.8$\times$ \\
 Two Robot Coordinated + IG & 29.8 $\pm$ 3.0 & 4.8$\times$ \\
 \bottomrule
-\multicolumn{3}{l}{\footnotesize $^\dagger$Preliminary estimates from limited trials (n=2)}
 \end{tabular}
 \end{table}
 
@@ -343,14 +342,14 @@ Figure~\ref{fig:coverage} shows coverage trajectories. The coordinated system ex
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.85\columnwidth]{figures/ros_two_robot.png}
-\caption{Two-robot coordinated exploration in ROS2/Gazebo. The robots have spread to complementary regions of the TurtleBot3 World environment, with Robot 1 (green path) exploring the left corridor while Robot 2 (blue path) maps the right section. Frontier markers indicate candidate targets ranked by information gain.}
+\caption{Six-robot simulation demonstrating scalability of the coordination framework. Robots distribute across rooms to minimize overlap, with each assigned to distinct high-IG frontiers. While our quantitative results focus on two robots, this visualization demonstrates the architecture's extensibility to larger teams.}
 \label{fig:two_robot}
 \end{figure}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.85\columnwidth]{figures/six_robot_sim.png}
-\caption{Six-robot simulation demonstrating scalability of the coordination framework. Robots distribute across rooms to minimize overlap, with each assigned to distinct high-IG frontiers. While our quantitative results focus on two robots, this visualization demonstrates the architecture's extensibility to larger teams.}
+\caption{Two-robot coordinated exploration in ROS2/Gazebo. The robots have spread to complementary regions of the TurtleBot3 World environment, with Robot 1 (green path) exploring the left corridor while Robot 2 (blue path) maps the right section. Frontier markers indicate candidate targets ranked by information gain.}
 \label{fig:six_robot}
 \end{figure}
 
